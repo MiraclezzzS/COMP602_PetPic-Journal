@@ -5,25 +5,25 @@
 				<div v-if="true" :style='{"margin":"0 0 10px 0","color":"#000","textAlign":"center","width":"100%","lineHeight":"70px","fontSize":"26px","fontWeight":"bold"}' class="title">PetPicJournalregister</div>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable">UserName</div>
-					<el-input  v-model="ruleForm.yonghuming"  autocomplete="off" placeholder="UserName"  type="text"  />
+					<el-input  v-model="ruleForm.username"  autocomplete="off" placeholder="UserName"  type="text"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable">Full Name</div>
-					<el-input  v-model="ruleForm.xingming"  autocomplete="off" placeholder="Full Name"  type="text"  />
+					<el-input  v-model="ruleForm.name"  autocomplete="off" placeholder="Full Name"  type="text"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable">PassWord</div>
-					<el-input  v-model="ruleForm.mima"  autocomplete="off" placeholder="PassWord"  type="password"  />
+					<el-input  v-model="ruleForm.password"  autocomplete="off" placeholder="PassWord"  type="password"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable"> Confirm Password</div>
-					<el-input  v-model="ruleForm.mima2" autocomplete="off" placeholder=" Confirm Password" type="password" />
+					<el-input  v-model="ruleForm.password2" autocomplete="off" placeholder=" Confirm Password" type="password" />
 				</el-form-item>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable">Gender</div>
-                    <el-select v-model="ruleForm.xingbie" placeholder="Please select Gender" >
+                    <el-select v-model="ruleForm.sex" placeholder="Please select Gender" >
                         <el-option
-                            v-for="(item,index) in yonghuxingbieOptions"
+                            v-for="(item,index) in yonghusexOptions"
                             v-bind:key="index"
                             :label="item"
                             :value="item">
@@ -32,7 +32,7 @@
 				</el-form-item>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable">Phone</div>
-					<el-input  v-model="ruleForm.lianxidianhua"  autocomplete="off" placeholder="Phone"  type="text"  />
+					<el-input  v-model="ruleForm.phone"  autocomplete="off" placeholder="Phone"  type="text"  />
 				</el-form-item>
 				<el-form-item :style='{"width":"70%","padding":"0","margin":"0 auto 15px","height":"auto"}' class="list-item" v-if="tableName=='yonghu'">
 					<div v-if="false" :style='{"width":"64px","lineHeight":"44px","fontSize":"14px","color":"rgba(64, 158, 255, 1)"}' class="lable">Head Sculpture</div>
@@ -41,8 +41,8 @@
                         action="file/upload"
                         :limit="3"
                         :multiple="true"
-                        :fileUrls="ruleForm.touxiang?ruleForm.touxiang:''"
-                        @change="yonghutouxiangUploadChange"
+                        :fileUrls="ruleForm.headImage?ruleForm.headImage:''"
+                        @change="yonghuheadImageUploadChange"
                     ></file-upload>
 				</el-form-item>
 				<button :style='{"border":"0","cursor":"pointer","padding":"0 10px","boxShadow":"0 0 0px rgba(64, 158, 255, .5)","margin":"20px auto 5px","color":"#fff","display":"block","outline":"none","borderRadius":"0","background":"#4662A1","width":"60%","fontSize":"18px","height":"70px"}' type="button" class="r-btn" @click="login()">register</button>
@@ -59,20 +59,20 @@ export default {
 	data() {
 		return {
 			ruleForm: {
-                xingbie: '',
+                sex: '',
 			},
 
             pageFlag : '',
 			tableName:"",
 			rules: {},
-            yonghuxingbieOptions: [],
+            yonghusexOptions: [],
 		};
 	},
 	mounted(){
         this.pageFlag = this.$storage.get("pageFlag");
 		let table = this.$storage.get("loginTable");
 		this.tableName = table;
-        this.yonghuxingbieOptions = "男,女".split(',')
+        this.yonghusexOptions = "男,女".split(',')
 	},
 	created() {
     
@@ -87,8 +87,8 @@ export default {
 		close(){
 			this.$router.push({ path: "/login" });
 		},
-        yonghutouxiangUploadChange(fileUrls) {
-            this.ruleForm.touxiang = fileUrls;
+        yonghuheadImageUploadChange(fileUrls) {
+            this.ruleForm.headImage = fileUrls;
         },
 
         // 多级联动参数
@@ -97,7 +97,7 @@ export default {
 		// register
 		login() {
 			var url=this.tableName+"/register";
-					if((!this.ruleForm.yonghuming) && `yonghu` == this.tableName){
+					if((!this.ruleForm.username) && `yonghu` == this.tableName){
 						this.$message.error(`UserName not null`);
 						return
 					}
@@ -111,7 +111,7 @@ export default {
 					
 					
 					
-					if((!this.ruleForm.xingming) && `yonghu` == this.tableName){
+					if((!this.ruleForm.name) && `yonghu` == this.tableName){
 						this.$message.error(`Full Name not null`);
 						return
 					}
@@ -125,7 +125,7 @@ export default {
 					
 					
 					
-					if((!this.ruleForm.mima) && `yonghu` == this.tableName){
+					if((!this.ruleForm.password) && `yonghu` == this.tableName){
 						this.$message.error(`PassWord not null`);
 						return
 					}
@@ -139,7 +139,7 @@ export default {
 					
 					
 					
-					if((this.ruleForm.mima!=this.ruleForm.mima2) && `yonghu` == this.tableName){
+					if((this.ruleForm.password!=this.ruleForm.password2) && `yonghu` == this.tableName){
 						this.$message.error(`The two password inputs are inconsistent`);
 						return
 					}
@@ -159,7 +159,7 @@ export default {
 					
 					
 					
-					if(`yonghu` == this.tableName && this.ruleForm.lianxidianhua&&(!this.$validate.isMobile(this.ruleForm.lianxidianhua))){
+					if(`yonghu` == this.tableName && this.ruleForm.phone&&(!this.$validate.isMobile(this.ruleForm.phone))){
 						this.$message.error(`Phone应输入手机格式`);
 						return
 					}
@@ -167,8 +167,8 @@ export default {
 					
 					
 					
-            if(this.ruleForm.touxiang!=null) {
-                this.ruleForm.touxiang = this.ruleForm.touxiang.replace(new RegExp(this.$base.url,"g"),"");
+            if(this.ruleForm.headImage!=null) {
+                this.ruleForm.headImage = this.ruleForm.headImage.replace(new RegExp(this.$base.url,"g"),"");
             }
 					
 					

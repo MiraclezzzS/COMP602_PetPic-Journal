@@ -9,11 +9,11 @@
 			label-width="100px"
 		>
 			<template >
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Album Category" prop="xiangcefenlei">
-					<el-input v-model="ruleForm.xiangcefenlei" placeholder="Album Category" clearable  :readonly="ro.xiangcefenlei"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Album Category" prop="imageclass">
+					<el-input v-model="ruleForm.imageclass" placeholder="Album Category" clearable  :readonly="ro.imageclass"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Album Category" prop="xiangcefenlei">
-					<el-input v-model="ruleForm.xiangcefenlei" placeholder="Album Category" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Album Category" prop="imageclass">
+					<el-input v-model="ruleForm.imageclass" placeholder="Album Category" readonly></el-input>
 				</el-form-item>
 			</template>
 			<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}' class="btn">
@@ -101,18 +101,18 @@ export default {
 			
 			
 			ro:{
-				xiangcefenlei : false,
+				imageclass : false,
 			},
 			
 			
 			ruleForm: {
-				xiangcefenlei: '',
+				imageclass: '',
 			},
 		
 
 			
 			rules: {
-				xiangcefenlei: [
+				imageclass: [
 				],
 			}
 		};
@@ -147,9 +147,9 @@ export default {
 			}else if(this.type=='cross'){
 				var obj = this.$storage.getObj('crossObj');
 				for (var o in obj){
-						if(o=='xiangcefenlei'){
-							this.ruleForm.xiangcefenlei = obj[o];
-							this.ro.xiangcefenlei = true;
+						if(o=='imageclass'){
+							this.ruleForm.imageclass = obj[o];
+							this.ro.imageclass = true;
 							continue;
 						}
 				}
@@ -177,7 +177,7 @@ export default {
 
     info(id) {
       this.$http({
-        url: `xiangcefenlei/info/${id}`,
+        url: `imageclass/info/${id}`,
         method: "get"
       }).then(({ data }) => {
         if (data && data.code === 0) {
@@ -239,7 +239,7 @@ var objcross = this.$storage.getObj('crossObj');
 				crossrefid:this.ruleForm.crossrefid,
 			} 
 			this.$http({ 
-				url: "xiangcefenlei/page", 
+				url: "imageclass/page", 
 				method: "get", 
 				params: params 
 			}).then(({ 
@@ -251,7 +251,7 @@ var objcross = this.$storage.getObj('crossObj');
 					       return false;
 				       } else {
 					 this.$http({
-					   url: `xiangcefenlei/${!this.ruleForm.id ? "save" : "update"}`,
+					   url: `imageclass/${!this.ruleForm.id ? "save" : "update"}`,
 					   method: "post",
 					   data: this.ruleForm
 					 }).then(({ data }) => {
@@ -263,7 +263,7 @@ var objcross = this.$storage.getObj('crossObj');
 					       onClose: () => {
 						 this.parent.showFlag = true;
 						 this.parent.addOrUpdateFlag = false;
-						 this.parent.xiangcefenleiCrossAddOrUpdateFlag = false;
+						 this.parent.imageclassCrossAddOrUpdateFlag = false;
 						 this.parent.search();
 						 this.parent.contentStyleChange();
 					       }
@@ -279,7 +279,7 @@ var objcross = this.$storage.getObj('crossObj');
 			});
 		 } else {
 			 this.$http({
-			   url: `xiangcefenlei/${!this.ruleForm.id ? "save" : "update"}`,
+			   url: `imageclass/${!this.ruleForm.id ? "save" : "update"}`,
 			   method: "post",
 			   data: this.ruleForm
 			 }).then(({ data }) => {
@@ -291,7 +291,7 @@ var objcross = this.$storage.getObj('crossObj');
 			       onClose: () => {
 				 this.parent.showFlag = true;
 				 this.parent.addOrUpdateFlag = false;
-				 this.parent.xiangcefenleiCrossAddOrUpdateFlag = false;
+				 this.parent.imageclassCrossAddOrUpdateFlag = false;
 				 this.parent.search();
 				 this.parent.contentStyleChange();
 			       }
@@ -312,7 +312,7 @@ var objcross = this.$storage.getObj('crossObj');
     back() {
       this.parent.showFlag = true;
       this.parent.addOrUpdateFlag = false;
-      this.parent.xiangcefenleiCrossAddOrUpdateFlag = false;
+      this.parent.imageclassCrossAddOrUpdateFlag = false;
       this.parent.contentStyleChange();
     },
   }

@@ -50,7 +50,7 @@ import com.utils.CommonUtil;
 @RequestMapping("/yonghu")
 public class LoginUserController {
     @Autowired
-    private LoginUserService yonghuService;
+    private LoginUserService loginUserService;
 
 
 
@@ -66,8 +66,8 @@ public class LoginUserController {
 	@IgnoreAuth
 	@RequestMapping(value = "/login")
 	public R login(String username, String password, String captcha, HttpServletRequest request) {
-		LoginUserEntity u = yonghuService.selectOne(new EntityWrapper<LoginUserEntity>().eq("yonghuming", username));
-		if(u==null || !u.getMima().equals(password)) {
+		LoginUserEntity u = loginUserService.selectOne(new EntityWrapper<LoginUserEntity>().eq("username", username));
+		if(u==null || !u.getPassword().equals(password)) {
 			return R.error("UserName or PassWord is Wrong");
 		}
 		String token = tokenService.generateToken(u.getId(), username,"yonghu",  "User" );
@@ -82,13 +82,13 @@ public class LoginUserController {
     @RequestMapping("/register")
     public R register(@RequestBody LoginUserEntity yonghu){
     	//ValidatorUtils.validateEntity(yonghu);
-    	LoginUserEntity u = yonghuService.selectOne(new EntityWrapper<LoginUserEntity>().eq("yonghuming", yonghu.getYonghuming()));
+    	LoginUserEntity u = loginUserService.selectOne(new EntityWrapper<LoginUserEntity>().eq("username", yonghu.getUsername()));
 		if(u!=null) {
 			return R.error("UserName is already used");
 		}
 		Long uId = new Date().getTime();
 		yonghu.setId(uId);
-        yonghuService.insert(yonghu);
+        loginUserService.insert(yonghu);
         return R.ok();
     }
 
@@ -108,7 +108,7 @@ public class LoginUserController {
     @RequestMapping("/session")
     public R getCurrUser(HttpServletRequest request){
     	Long id = (Long)request.getSession().getAttribute("userId");
-        LoginUserEntity u = yonghuService.selectById(id);
+        LoginUserEntity u = loginUserService.selectById(id);
         return R.ok().put("data", u);
     }
     
@@ -118,12 +118,12 @@ public class LoginUserController {
     @IgnoreAuth
 	@RequestMapping(value = "/resetPass")
     public R resetPass(String username, HttpServletRequest request){
-    	LoginUserEntity u = yonghuService.selectOne(new EntityWrapper<LoginUserEntity>().eq("yonghuming", username));
+    	LoginUserEntity u = loginUserService.selectOne(new EntityWrapper<LoginUserEntity>().eq("username", username));
     	if(u==null) {
     		return R.error("userName is wrong");
     	}
-    	u.setMima("123456");
-        yonghuService.updateById(u);
+    	u.setPassword("123456");
+        loginUserService.updateById(u);
         return R.ok("PassWord is reseted：123456");
     }
 
@@ -138,7 +138,7 @@ public class LoginUserController {
         EntityWrapper<LoginUserEntity> ew = new EntityWrapper<LoginUserEntity>();
 
 
-		PageUtils page = yonghuService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, yonghu), params), params));
+		PageUtils page = loginUserService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, yonghu), params), params));
         return R.ok().put("data", page);
     }
     
@@ -151,7 +151,7 @@ public class LoginUserController {
 		HttpServletRequest request){
         EntityWrapper<LoginUserEntity> ew = new EntityWrapper<LoginUserEntity>();
 
-		PageUtils page = yonghuService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, yonghu), params), params));
+		PageUtils page = loginUserService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, yonghu), params), params));
         return R.ok().put("data", page);
     }
 
@@ -162,7 +162,7 @@ public class LoginUserController {
     public R list( LoginUserEntity yonghu){
        	EntityWrapper<LoginUserEntity> ew = new EntityWrapper<LoginUserEntity>();
       	ew.allEq(MPUtil.allEQMapPre( yonghu, "yonghu")); 
-        return R.ok().put("data", yonghuService.selectListView(ew));
+        return R.ok().put("data", loginUserService.selectListView(ew));
     }
 
 	 /**
@@ -172,7 +172,7 @@ public class LoginUserController {
     public R query(LoginUserEntity yonghu){
         EntityWrapper< LoginUserEntity> ew = new EntityWrapper< LoginUserEntity>();
  		ew.allEq(MPUtil.allEQMapPre( yonghu, "yonghu")); 
-		LoginUserView yonghuView =  yonghuService.selectView(ew);
+		LoginUserView yonghuView =  loginUserService.selectView(ew);
 		return R.ok("Successfully queried user").put("data", yonghuView);
     }
 	
@@ -181,7 +181,7 @@ public class LoginUserController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        LoginUserEntity yonghu = yonghuService.selectById(id);
+        LoginUserEntity yonghu = loginUserService.selectById(id);
         return R.ok().put("data", yonghu);
     }
 
@@ -191,7 +191,7 @@ public class LoginUserController {
 	@IgnoreAuth
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        LoginUserEntity yonghu = yonghuService.selectById(id);
+        LoginUserEntity yonghu = loginUserService.selectById(id);
         return R.ok().put("data", yonghu);
     }
     
@@ -205,13 +205,13 @@ public class LoginUserController {
     public R save(@RequestBody LoginUserEntity yonghu, HttpServletRequest request){
     	yonghu.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(yonghu);
-    	LoginUserEntity u = yonghuService.selectOne(new EntityWrapper<LoginUserEntity>().eq("yonghuming", yonghu.getYonghuming()));
+    	LoginUserEntity u = loginUserService.selectOne(new EntityWrapper<LoginUserEntity>().eq("username", yonghu.getUsername()));
 		if(u!=null) {
-			return R.error("User已存在");
+			return R.error("User   ");
 		}
 
 		yonghu.setId(new Date().getTime());
-        yonghuService.insert(yonghu);
+        loginUserService.insert(yonghu);
         return R.ok();
     }
     
@@ -222,13 +222,13 @@ public class LoginUserController {
     public R add(@RequestBody LoginUserEntity yonghu, HttpServletRequest request){
     	yonghu.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(yonghu);
-    	LoginUserEntity u = yonghuService.selectOne(new EntityWrapper<LoginUserEntity>().eq("yonghuming", yonghu.getYonghuming()));
+    	LoginUserEntity u = loginUserService.selectOne(new EntityWrapper<LoginUserEntity>().eq("username", yonghu.getUsername()));
 		if(u!=null) {
 			return R.error("UserName is Wrong");
 		}
 
 		yonghu.setId(new Date().getTime());
-        yonghuService.insert(yonghu);
+        loginUserService.insert(yonghu);
         return R.ok();
     }
 
@@ -240,7 +240,7 @@ public class LoginUserController {
     @Transactional
     public R update(@RequestBody LoginUserEntity yonghu, HttpServletRequest request){
         //ValidatorUtils.validateEntity(yonghu);
-        yonghuService.updateById(yonghu);//All更新
+        loginUserService.updateById(yonghu);//All  
         return R.ok();
     }
 
@@ -252,7 +252,7 @@ public class LoginUserController {
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
-        yonghuService.deleteBatchIds(Arrays.asList(ids));
+        loginUserService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
     

@@ -18,7 +18,7 @@
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white",
-			"navigationBarTitleText": "忘记PassWord"
+			"navigationBarTitleText": "forget PassWord"
 		}
 	}, {
 		"path": "pages/center/center",
@@ -69,38 +69,38 @@
 		}
 	}
 	,{
-		"path": "pages/xiangcefenlei/list",
+		"path": "pages/imageClass/list",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	},{
-		"path": "pages/xiangcefenlei/add-or-update",
+		"path": "pages/imageClass/add-or-update",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	},{
-		"path": "pages/xiangcefenlei/detail",
+		"path": "pages/imageClass/detail",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	}
 	,{
-		"path": "pages/chongwuxiangce/list",
+		"path": "pages/petImage/list",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	},{
-		"path": "pages/chongwuxiangce/add-or-update",
+		"path": "pages/petImage/add-or-update",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	},{
-		"path": "pages/chongwuxiangce/detail",
+		"path": "pages/petImage/detail",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
@@ -183,19 +183,19 @@
 		}
 	}
 	,{
-		"path": "pages/discusschongwuxiangce/list",
+		"path": "pages/discussPet/list",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	},{
-		"path": "pages/discusschongwuxiangce/add-or-update",
+		"path": "pages/discussPet/add-or-update",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
 		}
 	},{
-		"path": "pages/discusschongwuxiangce/detail",
+		"path": "pages/discussPet/detail",
 		"style": {
 			"navigationBarBackgroundColor": "#86CE9F",
 			"navigationBarTextStyle": "white"
@@ -237,7 +237,7 @@
 			
 
 			,{
-				"pagePath": "pages/chongwuxiangce/list",
+				"pagePath": "pages/petImage/list",
 				"iconPath": "/static/tabs/icon1.png",
 				"selectedIconPath": "/static/tabs/icon1_act.png",
 				"text": "Pet Album"

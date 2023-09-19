@@ -6,14 +6,14 @@
 				<el-row :style='{"display":"block"}' >
 					<div :style='{"width":"auto","margin":"0 10px 30px 0","background":"none","display":"inline-block"}'>
 						<label :style='{"padding":"0 10px","margin":"0 10px 0 0","color":"#000","display":"inline-block","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">Album Category</label>
-						<el-input v-model="searchForm.xiangcefenlei" placeholder="Album Category" clearable></el-input>
+						<el-input v-model="searchForm.imageclass" placeholder="Album Category" clearable></el-input>
 					</div>
 					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","outline":"none","margin":"0 10px","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' type="success" @click="search()">Search</el-button>
 				</el-row>
 
 				<el-row :style='{"margin":"40px 0","display":"flex"}'>
-					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","margin":"0 10px 0 0","outline":"none","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' v-if="isAuth('xiangcefenlei','Add')" type="success" @click="addOrUpdateHandler()">Add</el-button>
-					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","margin":"0 10px 0 0","outline":"none","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' v-if="isAuth('xiangcefenlei','Delete')" :disabled="dataListSelections.length <= 0" type="danger" @click="deleteHandler()">Delete</el-button>
+					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","margin":"0 10px 0 0","outline":"none","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' v-if="isAuth('imageclass','Add')" type="success" @click="addOrUpdateHandler()">Add</el-button>
+					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","margin":"0 10px 0 0","outline":"none","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' v-if="isAuth('imageclass','Delete')" :disabled="dataListSelections.length <= 0" type="danger" @click="deleteHandler()">Delete</el-button>
 
 
 
@@ -25,29 +25,29 @@
 				<el-table class="tables"
 					:stripe='false'
 					:style='{"padding":"0","boxShadow":"0px 4px 10px 0px rgba(0,0,0,0.3020)","borderColor":"#eee","borderRadius":"30px","borderWidth":"1px 0 0 1px","background":"#fff","width":"100%","borderStyle":"solid"}' 
-					v-if="isAuth('xiangcefenlei','View')"
+					v-if="isAuth('imageclass','View')"
 					:data="dataList"
 					v-loading="dataListLoading"
 				@selection-change="selectionChangeHandler">
 					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
 					<el-table-column :resizable='true' :sortable='true' label="Number" type="index" width="50" />
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="xiangcefenlei"
+						prop="imageclass"
 					label="Album Category">
 						<template slot-scope="scope">
-							{{scope.row.xiangcefenlei}}
+							{{scope.row.imageclass}}
 						</template>
 					</el-table-column>
 					<el-table-column width="300" label="Operate">
 						<template slot-scope="scope">
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 6px 0","outline":"none","color":"#fff","borderRadius":"30px","background":"#4662A1","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('xiangcefenlei','View')" type="success" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">Details</el-button>
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 6px 0","outline":"none","color":"#fff","borderRadius":"30px","background":"#4662A1","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('xiangcefenlei','Modify')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">Modify</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 6px 0","outline":"none","color":"#fff","borderRadius":"30px","background":"#4662A1","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('imageclass','View')" type="success" size="mini" @click="addOrUpdateHandler(scope.row.id,'info')">Details</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 6px 0","outline":"none","color":"#fff","borderRadius":"30px","background":"#4662A1","width":"auto","fontSize":"14px","height":"32px"}' v-if=" isAuth('imageclass','Modify')" type="primary" size="mini" @click="addOrUpdateHandler(scope.row.id)">Modify</el-button>
 
 
 
 
 
-							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 6px 0","outline":"none","color":"#fff","borderRadius":"30px","background":"#4662A1","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('xiangcefenlei','Delete') " type="danger" size="mini" @click="deleteHandler(scope.row.id)">Delete</el-button>
+							<el-button :style='{"border":"0","cursor":"pointer","padding":"0 24px","margin":"0 10px 6px 0","outline":"none","color":"#fff","borderRadius":"30px","background":"#4662A1","width":"auto","fontSize":"14px","height":"32px"}' v-if="isAuth('imageclass','Delete') " type="danger" size="mini" @click="deleteHandler(scope.row.id)">Delete</el-button>
 						</template>
 					</el-table-column>
 				</el-table>
@@ -170,11 +170,11 @@ export default {
         sort: 'id',
         order: 'desc',
       }
-           if(this.searchForm.xiangcefenlei!='' && this.searchForm.xiangcefenlei!=undefined){
-            params['xiangcefenlei'] = '%' + this.searchForm.xiangcefenlei + '%'
+           if(this.searchForm.imageclass!='' && this.searchForm.imageclass!=undefined){
+            params['imageclass'] = '%' + this.searchForm.imageclass + '%'
           }
       this.$http({
-        url: "xiangcefenlei/page",
+        url: "imageclass/page",
         method: "get",
         params: params
       }).then(({ data }) => {
@@ -232,7 +232,7 @@ export default {
         type: "warning"
       }).then(() => {
         this.$http({
-          url: "xiangcefenlei/delete",
+          url: "imageclass/delete",
           method: "post",
           data: ids
         }).then(({ data }) => {

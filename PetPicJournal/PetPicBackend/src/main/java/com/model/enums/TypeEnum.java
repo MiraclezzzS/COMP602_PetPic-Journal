@@ -5,11 +5,11 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.enums.IEnum;
 
 /**
- * 必须现在 IEnum 配置 该包扫描自动注入，View文件 spring-mybatis.xml 参数 typeEnumsPackage
+ *      IEnum            ，View   spring-mybatis.xml    typeEnumsPackage
  */
 public enum TypeEnum implements IEnum {
-    DISABLED(0, "禁用"),
-    NORMAL(1, "正常");
+    DISABLED(0, "  "),
+    NORMAL(1, "  ");
 
     private final int value;
     private final String desc;
@@ -24,7 +24,7 @@ public enum TypeEnum implements IEnum {
         return this.value;
     }
 
-    // Jackson 注解为 JsonValue 返回中文 json 描述
+    // Jackson     JsonValue      json   
     public String getDesc() {
         return this.desc;
     }
