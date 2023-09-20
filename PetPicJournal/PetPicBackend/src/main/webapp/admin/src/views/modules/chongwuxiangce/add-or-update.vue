@@ -15,32 +15,32 @@
 				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Photo Title" prop="zhaopianbiaoti">
 					<el-input v-model="ruleForm.zhaopianbiaoti" placeholder="Photo Title" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="Album Category" prop="xiangcefenlei">
-					<el-select :disabled="ro.xiangcefenlei" v-model="ruleForm.xiangcefenlei" placeholder="Please select Album Category" >
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="Album Category" prop="imageclass">
+					<el-select :disabled="ro.imageclass" v-model="ruleForm.imageclass" placeholder="Please select Album Category" >
 						<el-option
-							v-for="(item,index) in xiangcefenleiOptions"
+							v-for="(item,index) in imageclassOptions"
 							v-bind:key="index"
 							:label="item"
 							:value="item">
 						</el-option>
 					</el-select>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Album Category" prop="xiangcefenlei">
-					<el-input v-model="ruleForm.xiangcefenlei"
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Album Category" prop="imageclass">
+					<el-input v-model="ruleForm.imageclass"
 						placeholder="Album Category" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="date" v-if="type!='info'" label="Shooting time" prop="paisheshijian">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="date" v-if="type!='info'" label="Shooting time" prop="imagetime">
 					<el-date-picker
 						format="yyyy 年 MM 月 dd 日"
 						value-format="yyyy-MM-dd"
-						v-model="ruleForm.paisheshijian" 
+						v-model="ruleForm.imagetime" 
 						type="date"
-						:readonly="ro.paisheshijian"
+						:readonly="ro.imagetime"
 						placeholder="Shooting time"
 					></el-date-picker> 
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-else-if="ruleForm.paisheshijian" label="Shooting time" prop="paisheshijian">
-					<el-input v-model="ruleForm.paisheshijian" placeholder="Shooting time" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-else-if="ruleForm.imagetime" label="Shooting time" prop="imagetime">
+					<el-input v-model="ruleForm.imagetime" placeholder="Shooting time" readonly></el-input>
 				</el-form-item>
 				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.zhaopian" label="照片" prop="zhaopian">
 					<file-upload
@@ -56,11 +56,11 @@
 					<img v-if="ruleForm.zhaopian.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.zhaopian.split(',')[0]" width="100" height="100">
 					<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.zhaopian.split(',')" :src="$base.url+item" width="100" height="100">
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="UserName" prop="yonghuming">
-					<el-input v-model="ruleForm.yonghuming" placeholder="UserName" clearable  :readonly="ro.yonghuming"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="UserName" prop="username">
+					<el-input v-model="ruleForm.username" placeholder="UserName" clearable  :readonly="ro.username"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="UserName" prop="yonghuming">
-					<el-input v-model="ruleForm.yonghuming" placeholder="UserName" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="UserName" prop="username">
+					<el-input v-model="ruleForm.username" placeholder="UserName" readonly></el-input>
 				</el-form-item>
 			</template>
 				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-if="type!='info'"  label="Photo description" prop="zhaopianmiaoshu">
@@ -160,36 +160,36 @@ export default {
 			
 			ro:{
 				zhaopianbiaoti : false,
-				xiangcefenlei : false,
-				paisheshijian : false,
+				imageclass : false,
+				imagetime : false,
 				zhaopian : false,
-				yonghuming : false,
+				username : false,
 				zhaopianmiaoshu : false,
 			},
 			
 			
 			ruleForm: {
 				zhaopianbiaoti: '',
-				xiangcefenlei: '',
-				paisheshijian: '',
+				imageclass: '',
+				imagetime: '',
 				zhaopian: '',
-				yonghuming: '',
+				username: '',
 				zhaopianmiaoshu: '',
 			},
 		
-			xiangcefenleiOptions: [],
+			imageclassOptions: [],
 
 			
 			rules: {
 				zhaopianbiaoti: [
 				],
-				xiangcefenlei: [
+				imageclass: [
 				],
-				paisheshijian: [
+				imagetime: [
 				],
 				zhaopian: [
 				],
-				yonghuming: [
+				username: [
 				],
 				zhaopianmiaoshu: [
 				],
@@ -231,14 +231,14 @@ export default {
 							this.ro.zhaopianbiaoti = true;
 							continue;
 						}
-						if(o=='xiangcefenlei'){
-							this.ruleForm.xiangcefenlei = obj[o];
-							this.ro.xiangcefenlei = true;
+						if(o=='imageclass'){
+							this.ruleForm.imageclass = obj[o];
+							this.ro.imageclass = true;
 							continue;
 						}
-						if(o=='paisheshijian'){
-							this.ruleForm.paisheshijian = obj[o];
-							this.ro.paisheshijian = true;
+						if(o=='imagetime'){
+							this.ruleForm.imagetime = obj[o];
+							this.ro.imagetime = true;
 							continue;
 						}
 						if(o=='zhaopian'){
@@ -246,9 +246,9 @@ export default {
 							this.ro.zhaopian = true;
 							continue;
 						}
-						if(o=='yonghuming'){
-							this.ruleForm.yonghuming = obj[o];
-							this.ro.yonghuming = true;
+						if(o=='username'){
+							this.ruleForm.username = obj[o];
+							this.ro.username = true;
 							continue;
 						}
 						if(o=='zhaopianmiaoshu'){
@@ -275,9 +275,9 @@ export default {
 				if (data && data.code === 0) {
 					
 					var json = data.data;
-					if(((json.yonghuming!=''&&json.yonghuming) || json.yonghuming==0) && this.$storage.get("role")!="Admin"){
-						this.ruleForm.yonghuming = json.yonghuming
-						this.ro.yonghuming = true;
+					if(((json.username!=''&&json.username) || json.username==0) && this.$storage.get("role")!="Admin"){
+						this.ruleForm.username = json.username
+						this.ro.username = true;
 					}
 				} else {
 					this.$message.error(data.msg);
@@ -285,11 +285,11 @@ export default {
 			});
 			
             this.$http({
-				url: `option/xiangcefenlei/xiangcefenlei`,
+				url: `option/imageclass/imageclass`,
 				method: "get"
             }).then(({ data }) => {
 				if (data && data.code === 0) {
-					this.xiangcefenleiOptions = data.data;
+					this.imageclassOptions = data.data;
 				} else {
 					this.$message.error(data.msg);
 				}

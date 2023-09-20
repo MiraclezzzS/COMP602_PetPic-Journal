@@ -10,9 +10,9 @@ import java.io.Serializable;
  
 
 /**
- * @author Hang Xu
- * @email kvf7328@autuni.ac.nz
- * @date 11-09-2023 19:23
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
  */
 public class DiscussPetModel  implements Serializable {
 	private static final long serialVersionUID = 1L;

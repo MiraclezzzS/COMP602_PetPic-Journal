@@ -9,57 +9,57 @@
 			label-width="100px"
 		>
 			<template >
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="UserName" prop="yonghuming">
-					<el-input v-model="ruleForm.yonghuming" placeholder="UserName" clearable  :readonly="ro.yonghuming"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="UserName" prop="username">
+					<el-input v-model="ruleForm.username" placeholder="UserName" clearable  :readonly="ro.username"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="UserName" prop="yonghuming">
-					<el-input v-model="ruleForm.yonghuming" placeholder="UserName" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="UserName" prop="username">
+					<el-input v-model="ruleForm.username" placeholder="UserName" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Full Name" prop="xingming">
-					<el-input v-model="ruleForm.xingming" placeholder="Full Name" clearable  :readonly="ro.xingming"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Full Name" prop="name">
+					<el-input v-model="ruleForm.name" placeholder="Full Name" clearable  :readonly="ro.name"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Full Name" prop="xingming">
-					<el-input v-model="ruleForm.xingming" placeholder="Full Name" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Full Name" prop="name">
+					<el-input v-model="ruleForm.name" placeholder="Full Name" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="PassWord" prop="mima">
-					<el-input v-model="ruleForm.mima" placeholder="PassWord" clearable  :readonly="ro.mima"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="PassWord" prop="password">
+					<el-input v-model="ruleForm.password" placeholder="PassWord" clearable  :readonly="ro.password"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="PassWord" prop="mima">
-					<el-input v-model="ruleForm.mima" placeholder="PassWord" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="PassWord" prop="password">
+					<el-input v-model="ruleForm.password" placeholder="PassWord" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="Gender" prop="xingbie">
-					<el-select :disabled="ro.xingbie" v-model="ruleForm.xingbie" placeholder="Please select Gender" >
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="select" v-if="type!='info'"  label="Gender" prop="sex">
+					<el-select :disabled="ro.sex" v-model="ruleForm.sex" placeholder="Please select Gender" >
 						<el-option
-							v-for="(item,index) in xingbieOptions"
+							v-for="(item,index) in sexOptions"
 							v-bind:key="index"
 							:label="item"
 							:value="item">
 						</el-option>
 					</el-select>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Gender" prop="xingbie">
-					<el-input v-model="ruleForm.xingbie"
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Gender" prop="sex">
+					<el-input v-model="ruleForm.sex"
 						placeholder="Gender" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Phone" prop="lianxidianhua">
-					<el-input v-model="ruleForm.lianxidianhua" placeholder="Phone" clearable  :readonly="ro.lianxidianhua"></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="input" v-if="type!='info'"  label="Phone" prop="phone">
+					<el-input v-model="ruleForm.phone" placeholder="Phone" clearable  :readonly="ro.phone"></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Phone" prop="lianxidianhua">
-					<el-input v-model="ruleForm.lianxidianhua" placeholder="Phone" readonly></el-input>
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' v-else class="input" label="Phone" prop="phone">
+					<el-input v-model="ruleForm.phone" placeholder="Phone" readonly></el-input>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.touxiang" label="Head Sculpture" prop="touxiang">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-if="type!='info' && !ro.headImage" label="Head Sculpture" prop="headImage">
 					<file-upload
 						tip="点击上传Head Sculpture"
 						action="file/upload"
 						:limit="3"
 						:multiple="true"
-						:fileUrls="ruleForm.touxiang?ruleForm.touxiang:''"
-						@change="touxiangUploadChange"
+						:fileUrls="ruleForm.headImage?ruleForm.headImage:''"
+						@change="headImageUploadChange"
 					></file-upload>
 				</el-form-item>
-				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-else-if="ruleForm.touxiang" label="Head Sculpture" prop="touxiang">
-					<img v-if="ruleForm.touxiang.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.touxiang.split(',')[0]" width="100" height="100">
-					<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.touxiang.split(',')" :src="$base.url+item" width="100" height="100">
+				<el-form-item :style='{"width":"100%","margin":"0 0 20px 0"}' class="upload" v-else-if="ruleForm.headImage" label="Head Sculpture" prop="headImage">
+					<img v-if="ruleForm.headImage.substring(0,4)=='http'" class="upload-img" style="margin-right:20px;" v-bind:key="index" :src="ruleForm.headImage.split(',')[0]" width="100" height="100">
+					<img v-else class="upload-img" style="margin-right:20px;" v-bind:key="index" v-for="(item,index) in ruleForm.headImage.split(',')" :src="$base.url+item" width="100" height="100">
 				</el-form-item>
 			</template>
 			<el-form-item :style='{"width":"100%","padding":"0","margin":"0"}' class="btn">
@@ -147,43 +147,43 @@ export default {
 			
 			
 			ro:{
-				yonghuming : false,
-				xingming : false,
-				mima : false,
-				xingbie : false,
-				lianxidianhua : false,
-				touxiang : false,
+				username : false,
+				name : false,
+				password : false,
+				sex : false,
+				phone : false,
+				headImage : false,
 			},
 			
 			
 			ruleForm: {
-				yonghuming: '',
-				xingming: '',
-				mima: '',
-				xingbie: '',
-				lianxidianhua: '',
-				touxiang: '',
+				username: '',
+				name: '',
+				password: '',
+				sex: '',
+				phone: '',
+				headImage: '',
 			},
 		
-			xingbieOptions: [],
+			sexOptions: [],
 
 			
 			rules: {
-				yonghuming: [
+				username: [
 					{ required: true, message: 'UserName not null', trigger: 'blur' },
 				],
-				xingming: [
+				name: [
 					{ required: true, message: 'Full Name not null', trigger: 'blur' },
 				],
-				mima: [
+				password: [
 					{ required: true, message: 'PassWord not null', trigger: 'blur' },
 				],
-				xingbie: [
+				sex: [
 				],
-				lianxidianhua: [
+				phone: [
 					{ validator: validateMobile, trigger: 'blur' },
 				],
-				touxiang: [
+				headImage: [
 				],
 			}
 		};
@@ -218,34 +218,34 @@ export default {
 			}else if(this.type=='cross'){
 				var obj = this.$storage.getObj('crossObj');
 				for (var o in obj){
-						if(o=='yonghuming'){
-							this.ruleForm.yonghuming = obj[o];
-							this.ro.yonghuming = true;
+						if(o=='username'){
+							this.ruleForm.username = obj[o];
+							this.ro.username = true;
 							continue;
 						}
-						if(o=='xingming'){
-							this.ruleForm.xingming = obj[o];
-							this.ro.xingming = true;
+						if(o=='name'){
+							this.ruleForm.name = obj[o];
+							this.ro.name = true;
 							continue;
 						}
-						if(o=='mima'){
-							this.ruleForm.mima = obj[o];
-							this.ro.mima = true;
+						if(o=='password'){
+							this.ruleForm.password = obj[o];
+							this.ro.password = true;
 							continue;
 						}
-						if(o=='xingbie'){
-							this.ruleForm.xingbie = obj[o];
-							this.ro.xingbie = true;
+						if(o=='sex'){
+							this.ruleForm.sex = obj[o];
+							this.ro.sex = true;
 							continue;
 						}
-						if(o=='lianxidianhua'){
-							this.ruleForm.lianxidianhua = obj[o];
-							this.ro.lianxidianhua = true;
+						if(o=='phone'){
+							this.ruleForm.phone = obj[o];
+							this.ro.phone = true;
 							continue;
 						}
-						if(o=='touxiang'){
-							this.ruleForm.touxiang = obj[o];
-							this.ro.touxiang = true;
+						if(o=='headImage'){
+							this.ruleForm.headImage = obj[o];
+							this.ro.headImage = true;
 							continue;
 						}
 				}
@@ -272,7 +272,7 @@ export default {
 				}
 			});
 			
-            this.xingbieOptions = "男,女".split(',')
+            this.sexOptions = "男,女".split(',')
 			
 		},
     // 多级联动参数
@@ -307,8 +307,8 @@ export default {
 
 
 
-	if(this.ruleForm.touxiang!=null) {
-		this.ruleForm.touxiang = this.ruleForm.touxiang.replace(new RegExp(this.$base.url,"g"),"");
+	if(this.ruleForm.headImage!=null) {
+		this.ruleForm.headImage = this.ruleForm.headImage.replace(new RegExp(this.$base.url,"g"),"");
 	}
 
 var objcross = this.$storage.getObj('crossObj');
@@ -430,8 +430,8 @@ var objcross = this.$storage.getObj('crossObj');
       this.parent.yonghuCrossAddOrUpdateFlag = false;
       this.parent.contentStyleChange();
     },
-    touxiangUploadChange(fileUrls) {
-	    this.ruleForm.touxiang = fileUrls;
+    headImageUploadChange(fileUrls) {
+	    this.ruleForm.headImage = fileUrls;
     },
   }
 };

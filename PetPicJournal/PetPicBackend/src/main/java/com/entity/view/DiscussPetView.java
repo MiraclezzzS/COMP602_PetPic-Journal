@@ -8,12 +8,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 
 import java.io.Serializable;
-
+ 
 
 /**
- * @author Hang Xu
- * @email kvf7328@autuni.ac.nz
- * @date 11-09-2023 19:23
+
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
  */
 @TableName("discusschongwuxiangce")
 public class DiscussPetView  extends DiscussPetEntity implements Serializable {

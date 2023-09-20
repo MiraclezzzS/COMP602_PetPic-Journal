@@ -8,15 +8,15 @@
 						<label :style='{"padding":"0 10px","margin":"0 10px 0 0","color":"#000","display":"inline-block","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">Photo Title</label>
 						<el-input v-model="searchForm.zhaopianbiaoti" placeholder="Photo Title" clearable></el-input>
 					</div>
-					<div :style='{"width":"auto","margin":"0 10px 30px 0","background":"none","display":"inline-block"}' class="select" label="Album Category" prop="xiangcefenlei">
+					<div :style='{"width":"auto","margin":"0 10px 30px 0","background":"none","display":"inline-block"}' class="select" label="Album Category" prop="imageclass">
 						<label :style='{"padding":"0 10px","margin":"0 10px 0 0","color":"#000","display":"inline-block","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">Album Category</label>
-						<el-select  @change="xiangcefenleiChange" clearable v-model="searchForm.xiangcefenlei" placeholder="Please select Album Category">
-							<el-option v-for="(item,index) in xiangcefenleiOptions" v-bind:key="index" :label="item" :value="item"></el-option>
+						<el-select  @change="imageclassChange" clearable v-model="searchForm.imageclass" placeholder="Please select Album Category">
+							<el-option v-for="(item,index) in imageclassOptions" v-bind:key="index" :label="item" :value="item"></el-option>
 						</el-select>
 					</div>
 					<div :style='{"width":"auto","margin":"0 10px 30px 0","background":"none","display":"inline-block"}'>
 						<label :style='{"padding":"0 10px","margin":"0 10px 0 0","color":"#000","display":"inline-block","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">UserName</label>
-						<el-input v-model="searchForm.yonghuming" placeholder="UserName" clearable></el-input>
+						<el-input v-model="searchForm.username" placeholder="UserName" clearable></el-input>
 					</div>
 					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","outline":"none","margin":"0 10px","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' type="success" @click="search()">Search</el-button>
 				</el-row>
@@ -50,17 +50,17 @@
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="xiangcefenlei"
+						prop="imageclass"
 					label="Album Category">
 						<template slot-scope="scope">
-							{{scope.row.xiangcefenlei}}
+							{{scope.row.imageclass}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="paisheshijian"
+						prop="imagetime"
 					label="Shooting time">
 						<template slot-scope="scope">
-							{{scope.row.paisheshijian}}
+							{{scope.row.imagetime}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true' prop="zhaopian" width="200" label="照片">
@@ -73,10 +73,10 @@
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="yonghuming"
+						prop="username"
 					label="UserName">
 						<template slot-scope="scope">
-							{{scope.row.yonghuming}}
+							{{scope.row.username}}
 						</template>
 					</el-table-column>
 					<el-table-column width="300" label="Operate">
@@ -129,7 +129,7 @@ import AddOrUpdate from "./add-or-update";
 export default {
   data() {
     return {
-      xiangcefenleiOptions: [],
+      imageclassOptions: [],
       searchForm: {
         key: ""
       },
@@ -199,11 +199,11 @@ export default {
 
     init () {
           this.$http({
-            url: `option/xiangcefenlei/xiangcefenlei`,
+            url: `option/imageclass/imageclass`,
             method: "get"
           }).then(({ data }) => {
             if (data && data.code === 0) {
-              this.xiangcefenleiOptions = data.data;
+              this.imageclassOptions = data.data;
             } else {
               this.$message.error(data.msg);
             }
@@ -226,13 +226,13 @@ export default {
            if(this.searchForm.zhaopianbiaoti!='' && this.searchForm.zhaopianbiaoti!=undefined){
             params['zhaopianbiaoti'] = '%' + this.searchForm.zhaopianbiaoti + '%'
           }
-           if(this.searchForm.xiangcefenlei!='' && this.searchForm.xiangcefenlei!=undefined){
-            params['xiangcefenlei'] = this.searchForm.xiangcefenlei
+           if(this.searchForm.imageclass!='' && this.searchForm.imageclass!=undefined){
+            params['imageclass'] = this.searchForm.imageclass
           }
-    params['sort'] = 'paisheshijian';
+    params['sort'] = 'imagetime';
     params['order'] = 'desc';
-           if(this.searchForm.yonghuming!='' && this.searchForm.yonghuming!=undefined){
-            params['yonghuming'] = '%' + this.searchForm.yonghuming + '%'
+           if(this.searchForm.username!='' && this.searchForm.username!=undefined){
+            params['username'] = '%' + this.searchForm.username + '%'
           }
       this.$http({
         url: "chongwuxiangce/page",
@@ -325,9 +325,9 @@ export default {
       for (let i=0; i < this.list.length; i++) {
           data.push({
           zhaopianbiaoti: this.list[i].zhaopianbiaoti,
-          xiangcefenlei: this.list[i].xiangcefenlei,
-          paisheshijian: this.list[i].paisheshijian,
-          yonghuming: this.list[i].yonghuming,
+          imageclass: this.list[i].imageclass,
+          imagetime: this.list[i].imagetime,
+          username: this.list[i].username,
         })
       }
       printJS({
@@ -339,17 +339,17 @@ export default {
 		columnSize: 1
 	  },
 	  {
-		field: 'xiangcefenlei',
+		field: 'imageclass',
 		displayName: 'Album Category',
 		columnSize: 1
 	  },
 	  {
-		field: 'paisheshijian',
+		field: 'imagetime',
 		displayName: 'Shooting time',
 		columnSize: 1
 	  },
 	  {
-		field: 'yonghuming',
+		field: 'username',
 		displayName: 'UserName',
 		columnSize: 1
 	  },

@@ -24,110 +24,105 @@ public class LoginUserVO  implements Serializable {
 	 * Full Name
 	 */
 	
-	private String xingming;
+	private String name;
 		
 	/**
 	 * PassWord
 	 */
 	
-	private String mima;
+	private String password;
 		
 	/**
 	 * Gender
 	 */
 	
-	private String xingbie;
+	private String sex;
 		
 	/**
 	 * Phone
 	 */
 	
-	private String lianxidianhua;
+	private String phone;
 		
 	/**
 	 * Head Sculpture
 	 */
 	
-	private String touxiang;
+	private String headImage;
 				
 	
-	/**
-	 * 设置：Full Name
-	 */
-	 
-	public void setXingming(String xingming) {
-		this.xingming = xingming;
-	}
 	
-	/**
-	 * 获取：Full Name
-	 */
-	public String getXingming() {
-		return xingming;
-	}
 				
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	/**
-	 * 设置：PassWord
+	 * set：PassWord
 	 */
 	 
-	public void setMima(String mima) {
-		this.mima = mima;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	/**
-	 * 获取：PassWord
+	 * get：PassWord
 	 */
-	public String getMima() {
-		return mima;
+	public String getPassword() {
+		return password;
 	}
 				
 	
 	/**
-	 * 设置：Gender
+	 * set：Gender
 	 */
 	 
-	public void setXingbie(String xingbie) {
-		this.xingbie = xingbie;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	
 	/**
-	 * 获取：Gender
+	 * get：Gender
 	 */
-	public String getXingbie() {
-		return xingbie;
+	public String getSex() {
+		return sex;
 	}
 				
 	
 	/**
-	 * 设置：Phone
+	 * set：Phone
 	 */
 	 
-	public void setLianxidianhua(String lianxidianhua) {
-		this.lianxidianhua = lianxidianhua;
+	public void setphone(String phone) {
+		this.phone = phone;
 	}
 	
 	/**
-	 * 获取：Phone
+	 * get：Phone
 	 */
-	public String getLianxidianhua() {
-		return lianxidianhua;
+	public String getphone() {
+		return phone;
 	}
 				
 	
 	/**
-	 * 设置：Head Sculpture
+	 * set：Head Sculpture
 	 */
 	 
-	public void setTouxiang(String touxiang) {
-		this.touxiang = touxiang;
+	public void setheadImage(String headImage) {
+		this.headImage = headImage;
 	}
 	
 	/**
-	 * 获取：Head Sculpture
+	 * get：Head Sculpture
 	 */
-	public String getTouxiang() {
-		return touxiang;
+	public String getheadImage() {
+		return headImage;
 	}
 			
 }

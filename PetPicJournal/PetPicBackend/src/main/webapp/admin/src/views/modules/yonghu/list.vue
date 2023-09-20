@@ -6,7 +6,7 @@
 				<el-row :style='{"display":"block"}' >
 					<div :style='{"width":"auto","margin":"0 10px 30px 0","background":"none","display":"inline-block"}'>
 						<label :style='{"padding":"0 10px","margin":"0 10px 0 0","color":"#000","display":"inline-block","lineHeight":"40px","fontSize":"14px","fontWeight":"500","height":"40px"}' class="item-label">UserName</label>
-						<el-input v-model="searchForm.yonghuming" placeholder="UserName" clearable></el-input>
+						<el-input v-model="searchForm.username" placeholder="UserName" clearable></el-input>
 					</div>
 					<el-button :style='{"border":"1px solid #4662A1","cursor":"pointer","padding":"0 24px","boxShadow":"0 2px 0 0 #97C9D6","outline":"none","margin":"0 10px","color":"#4662A1","borderRadius":"0","background":"#fff","width":"auto","fontSize":"14px","height":"40px"}' type="success" @click="search()">Search</el-button>
 				</el-row>
@@ -32,38 +32,38 @@
 					<el-table-column :resizable='true' type="selection" align="center" width="50"></el-table-column>
 					<el-table-column :resizable='true' :sortable='true' label="Number" type="index" width="50" />
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="yonghuming"
+						prop="username"
 					label="UserName">
 						<template slot-scope="scope">
-							{{scope.row.yonghuming}}
+							{{scope.row.username}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="xingming"
+						prop="name"
 					label="Full Name">
 						<template slot-scope="scope">
-							{{scope.row.xingming}}
+							{{scope.row.name}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="xingbie"
+						prop="sex"
 					label="Gender">
 						<template slot-scope="scope">
-							{{scope.row.xingbie}}
+							{{scope.row.sex}}
 						</template>
 					</el-table-column>
 					<el-table-column :resizable='true' :sortable='true'  
-						prop="lianxidianhua"
+						prop="phone"
 					label="Phone">
 						<template slot-scope="scope">
-							{{scope.row.lianxidianhua}}
+							{{scope.row.phone}}
 						</template>
 					</el-table-column>
-					<el-table-column :resizable='true' :sortable='true' prop="touxiang" width="200" label="Head Sculpture">
+					<el-table-column :resizable='true' :sortable='true' prop="headImage" width="200" label="Head Sculpture">
 						<template slot-scope="scope">
-							<div v-if="scope.row.touxiang">
-								<img v-if="scope.row.touxiang.substring(0,4)=='http'" :src="scope.row.touxiang.split(',')[0]" width="100" height="100">
-								<img v-else :src="$base.url+scope.row.touxiang.split(',')[0]" width="100" height="100">
+							<div v-if="scope.row.headImage">
+								<img v-if="scope.row.headImage.substring(0,4)=='http'" :src="scope.row.headImage.split(',')[0]" width="100" height="100">
+								<img v-else :src="$base.url+scope.row.headImage.split(',')[0]" width="100" height="100">
 							</div>
 							<div v-else>No pictures</div>
 						</template>
@@ -200,8 +200,8 @@ export default {
         sort: 'id',
         order: 'desc',
       }
-           if(this.searchForm.yonghuming!='' && this.searchForm.yonghuming!=undefined){
-            params['yonghuming'] = '%' + this.searchForm.yonghuming + '%'
+           if(this.searchForm.username!='' && this.searchForm.username!=undefined){
+            params['username'] = '%' + this.searchForm.username + '%'
           }
       this.$http({
         url: "yonghu/page",

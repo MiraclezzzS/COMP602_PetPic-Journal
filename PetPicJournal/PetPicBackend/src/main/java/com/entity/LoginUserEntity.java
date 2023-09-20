@@ -16,9 +16,6 @@ import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.apache.commons.beanutils.BeanUtils;
-import com.baomidou.mybatisplus.annotations.TableField;
-import com.baomidou.mybatisplus.enums.FieldFill;
-import com.baomidou.mybatisplus.enums.IdType;
 
 
 /**
@@ -47,7 +44,7 @@ public class LoginUserEntity<T> implements Serializable {
 	}
 	
 	/**
-	 * 主键id
+	 * id
 	 */
 	@TableId
 	private Long id;
@@ -55,37 +52,37 @@ public class LoginUserEntity<T> implements Serializable {
 	 * UserName
 	 */
 					
-	private String yonghuming;
+	private String username;
 	
 	/**
 	 * Full Name
 	 */
 					
-	private String xingming;
+	private String name;
 	
 	/**
 	 * PassWord
 	 */
 					
-	private String mima;
+	private String password;
 	
 	/**
 	 * Gender
 	 */
 					
-	private String xingbie;
+	private String sex;
 	
 	/**
 	 * Phone
 	 */
 					
-	private String lianxidianhua;
+	private String phone;
 	
 	/**
 	 * Head Sculpture
 	 */
 					
-	private String touxiang;
+	private String headImage;
 	
 	
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
@@ -106,77 +103,74 @@ public class LoginUserEntity<T> implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * set：UserName
-	 */
-	public void setYonghuming(String yonghuming) {
-		this.yonghuming = yonghuming;
+	
+	public String getUsername() {
+		return username;
 	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	/**
-	 * set：UserName
+	 * set：Full Name
 	 */
-	public String getYonghuming() {
-		return yonghuming;
+	public void setName(String name) {
+		this.name = name;
 	}
 	/**
 	 * set：Full Name
 	 */
-	public void setXingming(String xingming) {
-		this.xingming = xingming;
-	}
-	/**
-	 * set：Full Name
-	 */
-	public String getXingming() {
-		return xingming;
+	public String getName() {
+		return name;
 	}
 	/**
 	 * set：PassWord
 	 */
-	public void setMima(String mima) {
-		this.mima = mima;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	/**
 	 * set：PassWord
 	 */
-	public String getMima() {
-		return mima;
+	public String getPassword() {
+		return password;
 	}
 	/**
 	 * set：Gender
 	 */
-	public void setXingbie(String xingbie) {
-		this.xingbie = xingbie;
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 	/**
 	 * get：Gender
 	 */
-	public String getXingbie() {
-		return xingbie;
+	public String getSex() {
+		return sex;
 	}
 	/**
 	 * set：Phone
 	 */
-	public void setLianxidianhua(String lianxidianhua) {
-		this.lianxidianhua = lianxidianhua;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	/**
 	 * get：Phone
 	 */
-	public String getLianxidianhua() {
-		return lianxidianhua;
+	public String getPhone() {
+		return phone;
 	}
 	/**
 	 * set：Head Sculpture
 	 */
-	public void setTouxiang(String touxiang) {
-		this.touxiang = touxiang;
+	public void setHeadImage(String headImage) {
+		this.headImage = headImage;
 	}
 	/**
 	 * get：Head Sculpture
 	 */
-	public String getTouxiang() {
-		return touxiang;
+	public String getHeadImage() {
+		return headImage;
 	}
 
 }

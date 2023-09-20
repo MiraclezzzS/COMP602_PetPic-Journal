@@ -7,12 +7,12 @@
 	
 	
     <resultMap type="com.entity.LoginUserEntity" id="yonghuMap">
-        <result property="yonghuming" column="yonghuming"/>
-        <result property="xingming" column="xingming"/>
-        <result property="mima" column="mima"/>
-        <result property="xingbie" column="xingbie"/>
-        <result property="lianxidianhua" column="lianxidianhua"/>
-        <result property="touxiang" column="touxiang"/>
+        <result property="username" column="username"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="sex" column="sex"/>
+        <result property="phone" column="phone"/>
+        <result property="headImage" column="head_image"/>
     </resultMap>
 
 
