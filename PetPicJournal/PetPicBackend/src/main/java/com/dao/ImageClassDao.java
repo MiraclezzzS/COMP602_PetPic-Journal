@@ -11,6 +11,14 @@ import org.apache.ibatis.annotations.Param;
 import com.entity.vo.ImageClassVO;
 import com.entity.view.ImageClassView;
 
+
+/**
+ * Album Category
+ * 
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
+ */
 public interface ImageClassDao extends BaseMapper<ImageClassEntity> {
 	
 	List<ImageClassVO> selectListVO(@Param("ew") Wrapper<ImageClassEntity> wrapper);

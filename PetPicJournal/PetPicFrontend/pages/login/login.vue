@@ -112,8 +112,8 @@
 				uni.setStorageSync("nickname",this.username);
 				uni.setStorageSync("nowTable", `${this.optionsValues[this.index]}`);
 				res = await this.$api.session(`${this.optionsValues[this.index]}`);
-                if(res.data.touxiang) {
-                    uni.setStorageSync('headportrait', res.data.touxiang);
+                if(res.data.headImage) {
+                    uni.setStorageSync('headportrait', res.data.headImage);
                 } else if(res.data.headportrait) {
                     uni.setStorageSync('headportrait', res.data.headportrait);
                 }

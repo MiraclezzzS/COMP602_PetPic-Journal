@@ -8,7 +8,7 @@
 				</picker>
 					<view v-if="queryIndex==0" class="search-form round">
 						<text class="cuIcon-search"></text>
-						<input v-model="searchForm.yonghuming" type="text" placeholder="UserName" ></input>
+						<input v-model="searchForm.username" type="text" placeholder="UserName" ></input>
 					</view>
 				<view class="action">
 					<button @tap="search" class="cu-btn shadow-blur round">search</button>
@@ -20,9 +20,9 @@
 			<!-- style 1 -->
 			<view class="uni-product-list" :style='{"padding":"0px 24rpx 24rpx","margin":"60rpx 0 0","flexWrap":"wrap","background":"none","flex":"1","display":"flex","width":"calc(100% - 220rpx)","justifyContent":"space-between","height":"auto"}'>
 				<view @tap="onDetailTap(product)" class="uni-product" :style='{"padding":"20rpx","margin":"0 0 40rpx","borderColor":"#86ce9f #e1f9eb","borderRadius":"60rpx","flexWrap":"wrap","borderWidth":"2rpx","background":"#fff","display":"flex","width":"48%","position":"relative","borderStyle":"solid","height":"auto"}' v-for="(product,index) in list" :key="index">
-					<view class="uni-product-title" :style='{"padding":"4rpx 20rpx","margin":"0 0 8rpx","whiteSpace":"nowrap","color":"#3d8e59","textAlign":"center","overflow":"hidden","borderRadius":"0","background":"none","width":"96%","lineHeight":"48rpx","fontSize":"28rpx","textOverflow":"ellipsis","order":"2"}'>{{product.xingming}}</view>
-					<image :style='{"minHeight":"260rpx","padding":"0","margin":"8rpx auto 8rpx","objectFit":"cover","borderRadius":"20rpx","display":"block","width":"100%","height":"auto","order":"1"}' mode="aspectFill" class="uni-product-image" v-if="preHttp(product.touxiang)" :src="product.touxiang.split(',')[0]"></image>
-					<image :style='{"minHeight":"260rpx","padding":"0","margin":"8rpx auto 8rpx","objectFit":"cover","borderRadius":"20rpx","display":"block","width":"100%","height":"auto","order":"1"}' mode="aspectFill" class="uni-product-image" v-else :src="product.touxiang?baseUrl+product.touxiang.split(',')[0]:''"></image>
+					<view class="uni-product-title" :style='{"padding":"4rpx 20rpx","margin":"0 0 8rpx","whiteSpace":"nowrap","color":"#3d8e59","textAlign":"center","overflow":"hidden","borderRadius":"0","background":"none","width":"96%","lineHeight":"48rpx","fontSize":"28rpx","textOverflow":"ellipsis","order":"2"}'>{{product.name}}</view>
+					<image :style='{"minHeight":"260rpx","padding":"0","margin":"8rpx auto 8rpx","objectFit":"cover","borderRadius":"20rpx","display":"block","width":"100%","height":"auto","order":"1"}' mode="aspectFill" class="uni-product-image" v-if="preHttp(product.headImage)" :src="product.headImage.split(',')[0]"></image>
+					<image :style='{"minHeight":"260rpx","padding":"0","margin":"8rpx auto 8rpx","objectFit":"cover","borderRadius":"20rpx","display":"block","width":"100%","height":"auto","order":"1"}' mode="aspectFill" class="uni-product-image" v-else :src="product.headImage?baseUrl+product.headImage.split(',')[0]:''"></image>
 					<view :style='{"width":"100%","padding":"8rpx 20rpx","justifyContent":"space-between","display":"flex","height":"auto","order":"5"}'>
 						<view :style='{"display":"flex"}' v-if="(userid && isAuth('yonghu','Modify')) || (!userid && isAuthFront('yonghu','Modify'))" @click.stop="onUpdateTap(product.id)">
 							<text :style='{"margin":"0 8rpx 0 0","fontSize":"28rpx","lineHeight":"1","color":"#666","display":"inline-block"}' class="cuIcon-edit"></text>
@@ -116,7 +116,7 @@
 			//Search change
 			queryChange(e) {
 				this.queryIndex=e.detail.value;
-				this.searchForm.yonghuming="";
+				this.searchForm.username="";
 			},
 			
 			
@@ -146,8 +146,8 @@
         params['order'] = 'desc';
 
 
-				if(this.searchForm.yonghuming){
-					params['yonghuming'] = '%' + this.searchForm.yonghuming + '%'
+				if(this.searchForm.username){
+					params['username'] = '%' + this.searchForm.username + '%'
 				}
 
 
@@ -221,8 +221,8 @@
                 searchForm['sort'] = 'id';
                 searchForm['order'] = 'desc';
 
-				if(this.searchForm.yonghuming){
-					searchForm['yonghuming'] = '%' + this.searchForm.yonghuming + '%'
+				if(this.searchForm.username){
+					searchForm['username'] = '%' + this.searchForm.username + '%'
 				}
                 let res = {};
                 if(this.userid) {

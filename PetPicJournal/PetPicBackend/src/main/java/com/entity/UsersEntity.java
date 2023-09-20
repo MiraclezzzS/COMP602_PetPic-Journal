@@ -18,7 +18,7 @@ public class UsersEntity implements Serializable {
 	private Long id;
 	
 	/**
-	 * User账号
+	 * User  
 	 */
 	private String username;
 	
@@ -28,7 +28,7 @@ public class UsersEntity implements Serializable {
 	private String password;
 	
 	/**
-	 * User类型
+	 * User  
 	 */
 	private String role;
 	

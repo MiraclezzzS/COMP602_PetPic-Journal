@@ -45,19 +45,7 @@ public class UsersController{
 	@Autowired
 	private TokenService tokenService;
 
-	/**
-	 * Login
-	 */
-	@IgnoreAuth
-	@RequestMapping(value = "/login")
-	public R login(String username, String password, String captcha, HttpServletRequest request) {
-		UsersEntity user = userService.selectOne(new EntityWrapper<UsersEntity>().eq("username", username));
-		if(user==null || !user.getPassword().equals(password)) {
-			return R.error("username  or PassWord is error");
-		}
-		String token = tokenService.generateToken(user.getId(),username, "users", user.getRole());
-		return R.ok().put("token", token);
-	}
+	
 	
 	/**
 	 * register
@@ -67,7 +55,7 @@ public class UsersController{
 	public R register(@RequestBody UsersEntity user){
 //    	ValidatorUtils.validateEntity(user);
     	if(userService.selectOne(new EntityWrapper<UsersEntity>().eq("username", user.getUsername())) !=null) {
-    		return R.error("User已存在");
+    		return R.error("User is exist");
     	}
         userService.insert(user);
         return R.ok();
@@ -82,20 +70,6 @@ public class UsersController{
 		return R.ok("Exit successfully");
 	}
 	
-	/**
-     * resetPass
-     */
-    @IgnoreAuth
-	@RequestMapping(value = "/resetPass")
-    public R resetPass(String username, HttpServletRequest request){
-    	UsersEntity user = userService.selectOne(new EntityWrapper<UsersEntity>().eq("username", username));
-    	if(user==null) {
-    		return R.error("user is not exist");
-    	}
-    	user.setPassword("123456");
-        userService.update(user,null);
-        return R.ok("PassWord is reseted：123456");
-    }
 	
 	/**
      * page
@@ -159,7 +133,7 @@ public class UsersController{
     	if(u!=null && u.getId()!=user.getId() && u.getUsername().equals(user.getUsername())) {
     		return R.error("UserName exists。");
     	}
-        userService.updateById(user);//All更新
+        userService.updateById(user);
         return R.ok();
     }
 
@@ -171,4 +145,34 @@ public class UsersController{
         userService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
+    
+
+	/**
+     * resetPass
+     */
+    @IgnoreAuth
+	@RequestMapping(value = "/resetPass")
+    public R resetPass(String username, HttpServletRequest request){
+    	UsersEntity user = userService.selectOne(new EntityWrapper<UsersEntity>().eq("username", username));
+    	if(user==null) {
+    		return R.error("user is not exist");
+    	}
+    	user.setPassword("123456");
+        userService.update(user,null);
+        return R.ok("PassWord is reseted：123456");
+    }
+    
+    /**
+	 * Login
+	 */
+	@IgnoreAuth
+	@RequestMapping(value = "/login")
+	public R login(String username, String password, String captcha, HttpServletRequest request) {
+		UsersEntity user = userService.selectOne(new EntityWrapper<UsersEntity>().eq("username", username));
+		if(user==null || !user.getPassword().equals(password)) {
+			return R.error("username  or PassWord is error");
+		}
+		String token = tokenService.generateToken(user.getId(),username, "users", user.getRole());
+		return R.ok().put("token", token);
+	}
 }

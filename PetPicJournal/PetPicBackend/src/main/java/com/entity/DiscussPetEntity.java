@@ -22,10 +22,9 @@ import com.baomidou.mybatisplus.enums.IdType;
 
 
 /**
-
- * @author Hang Xu
- * @email kvf7328@autuni.ac.nz
- * @date 8/9/2023
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
  */
 @TableName("discusschongwuxiangce")
 public class DiscussPetEntity<T> implements Serializable {
@@ -45,10 +44,14 @@ public class DiscussPetEntity<T> implements Serializable {
 		}
 	}
 	
-
+	/**
+	 * id
+	 */
 	@TableId
 	private Long id;
-
+	/**
+	 * refid
+	 */
 					
 	private Long refid;
 	
@@ -73,7 +76,7 @@ public class DiscussPetEntity<T> implements Serializable {
 	/**
 	 * Comment content
 	 */
-
+					
 	private String content;
 	
 	/**
@@ -101,50 +104,75 @@ public class DiscussPetEntity<T> implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	/**
+	 * set：id
+	 */
 	public void setRefid(Long refid) {
 		this.refid = refid;
 	}
+	/**
+	 * get：id
+	 */
 	public Long getRefid() {
 		return refid;
 	}
-
+	/**
+	 * set：Userid
+	 */
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
-
+	/**
+	 * get：Userid
+	 */
 	public Long getUserid() {
 		return userid;
 	}
-
+	/**
+	 * set：Head Sculpture
+	 */
 	public void setAvatarurl(String avatarurl) {
 		this.avatarurl = avatarurl;
 	}
-
+	/**
+	 * get：Head Sculpture
+	 */
 	public String getAvatarurl() {
 		return avatarurl;
 	}
-
+	/**
+	 * set：UserName
+	 */
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-
+	/**
+	 * get：UserName
+	 */
 	public String getNickname() {
 		return nickname;
 	}
-
+	/**
+	 * set：Comment content
+	 */
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	/**
+	 * get：Comment content
+	 */
 	public String getContent() {
 		return content;
 	}
-
+	/**
+	 * set：Reply content
+	 */
 	public void setReply(String reply) {
 		this.reply = reply;
 	}
-
+	/**
+	 * get：Reply content
+	 */
 	public String getReply() {
 		return reply;
 	}

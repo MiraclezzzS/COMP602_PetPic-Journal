@@ -12,11 +12,11 @@ import com.entity.view.DiscussPetView;
 
 
 /**
- * Pet Album评论表
+ * Pet Album
  *
- * @author Hang Xu
- * @email kvf7328@autuni.ac.nz
- * @date 13/9/2023
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
  */
 public interface DiscussPetService extends IService<DiscussPetEntity> {
 

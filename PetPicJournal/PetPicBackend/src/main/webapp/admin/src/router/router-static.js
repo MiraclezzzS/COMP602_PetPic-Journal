@@ -19,7 +19,7 @@ import center from '@/views/center'
     import discusschongwuxiangce from '@/views/modules/discusschongwuxiangce/list'
     import chongwuxiangce from '@/views/modules/chongwuxiangce/list'
     import storeup from '@/views/modules/storeup/list'
-    import xiangcefenlei from '@/views/modules/xiangcefenlei/list'
+    import imageclass from '@/views/modules/imageclass/list'
     import config from '@/views/modules/config/list'
 
 
@@ -91,9 +91,9 @@ const routes = [{
         component: storeup
       }
       ,{
-	path: '/xiangcefenlei',
+	path: '/imageclass',
         name: 'Album Category',
-        component: xiangcefenlei
+        component: imageclass
       }
       ,{
 	path: '/config',

@@ -6,35 +6,35 @@
 			<!--loginin user name div-->
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">UserName</view>
-				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.yonghuming" v-model="ruleForm.yonghuming" placeholder="UserName"></input>
+				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.username" v-model="ruleForm.username" placeholder="UserName"></input>
 			</view>
 			<!--name div-->	
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">Full Name</view>
-				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.xingming" v-model="ruleForm.xingming" placeholder="Full Name"></input>
+				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.name" v-model="ruleForm.name" placeholder="Full Name"></input>
 			</view>
 			
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">PassWord</view>
-				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.mima" v-model="ruleForm.mima" placeholder="PassWord"></input>
+				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.password" v-model="ruleForm.password" placeholder="PassWord"></input>
 			</view>
 			
 			<!-- sex div-->
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class=" select">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">Gender</view>
-				<picker :style='{"width":"100%","flex":"1","height":"auto"}' @change="sexChange" :value="xingbieIndex"  :range="sexOptions">
-					<view :style='{"width":"100%","padding":"0 20rpx","lineHeight":"80rpx","fontSize":"28rpx","color":"#666","background":"none"}' class="uni-input">{{ruleForm.xingbie?ruleForm.xingbie:"Please select Gender"}}</view>
+				<picker :style='{"width":"100%","flex":"1","height":"auto"}' @change="sexChange" :value="sexIndex"  :range="sexOptions">
+					<view :style='{"width":"100%","padding":"0 20rpx","lineHeight":"80rpx","fontSize":"28rpx","color":"#666","background":"none"}' class="uni-input">{{ruleForm.sex?ruleForm.sex:"Please select Gender"}}</view>
 				</picker>
 			</view>
 			<!-- phone div-->
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">Phone</view>
-				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.lianxidianhua" v-model="ruleForm.lianxidianhua" placeholder="Phone"></input>
+				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.phone" v-model="ruleForm.phone" placeholder="Phone"></input>
 			</view>
 			
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="" @tap="headTap">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">Head Sculpture</view>
-				<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-if="ruleForm.touxiang" :src="baseUrl+ruleForm.touxiang.split(',')[0]" mode="aspectFill"></image>
+				<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-if="ruleForm.headImage" :src="baseUrl+ruleForm.headImage.split(',')[0]" mode="aspectFill"></image>
 				<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-else src="../../static/gen/upload.png" mode="aspectFill"></image>
 			</view>
 			
@@ -60,24 +60,24 @@
 			return {
 				cross:'',
 				ruleForm: {
-				yonghuming: '',
-				xingming: '',
-				mima: '',
-				xingbie: '',
-				lianxidianhua: '',
-				touxiang: '',
+				username: '',
+				name: '',
+				password: '',
+				sex: '',
+				phone: '',
+				headImage: '',
 				},
 				sexOptions: [],
-				xingbieIndex: 0,
+				sexIndex: 0,
 				// login User Information
 				user: {},
                 ro:{
-                   yonghuming : false,
-                   xingming : false,
-                   mima : false,
-                   xingbie : false,
-                   lianxidianhua : false,
-                   touxiang : false,
+                   username : false,
+                   name : false,
+                   password : false,
+                   sex : false,
+                   phone : false,
+                   headImage : false,
                 },
 			}
 		},
@@ -125,34 +125,34 @@
 			if(options.cross){
 				var obj = uni.getStorageSync('crossObj');
 				for (var o in obj){
-					if(o=='yonghuming'){
-					this.ruleForm.yonghuming = obj[o];
-					this.ro.yonghuming = true;
+					if(o=='username'){
+					this.ruleForm.username = obj[o];
+					this.ro.username = true;
 					continue;
 					}
-					if(o=='xingming'){
-					this.ruleForm.xingming = obj[o];
-					this.ro.xingming = true;
+					if(o=='name'){
+					this.ruleForm.name = obj[o];
+					this.ro.name = true;
 					continue;
 					}
-					if(o=='mima'){
-					this.ruleForm.mima = obj[o];
-					this.ro.mima = true;
+					if(o=='password'){
+					this.ruleForm.password = obj[o];
+					this.ro.password = true;
 					continue;
 					}
-					if(o=='xingbie'){
-					this.ruleForm.xingbie = obj[o];
-					this.ro.xingbie = true;
+					if(o=='sex'){
+					this.ruleForm.sex = obj[o];
+					this.ro.sex = true;
 					continue;
 					}
-					if(o=='lianxidianhua'){
-					this.ruleForm.lianxidianhua = obj[o];
-					this.ro.lianxidianhua = true;
+					if(o=='phone'){
+					this.ruleForm.phone = obj[o];
+					this.ro.phone = true;
 					continue;
 					}
-					if(o=='touxiang'){
-					this.ruleForm.touxiang = obj[o].split(",")[0];
-					this.ro.touxiang = true;
+					if(o=='headImage'){
+					this.ruleForm.headImage = obj[o].split(",")[0];
+					this.ro.headImage = true;
 					continue;
 					}
 				}
@@ -174,15 +174,15 @@
 
 			// sex change
 			sexChange(e) {
-				this.xingbieIndex = e.target.value
-				this.ruleForm.xingbie = this.sexOptions[this.xingbieIndex]
+				this.sexIndex = e.target.value
+				this.ruleForm.sex = this.sexOptions[this.sexIndex]
 			},
 			
 			// head change	
 			headTap() {
 				let _this = this;
 				this.$api.upload(function(res) {
-					_this.ruleForm.touxiang = 'upload/' + res.file;
+					_this.ruleForm.headImage = 'upload/' + res.file;
 					_this.$forceUpdate();
 					_this.$nextTick(()=>{
 						_this.styleChange()
@@ -209,19 +209,19 @@
 
 //跨表计算判断
 				var obj;
-				if((!this.ruleForm.yonghuming)){
+				if((!this.ruleForm.username)){
 					this.$utils.msg(`UserName not null`);
 					return
 				}
-				if((!this.ruleForm.xingming)){
+				if((!this.ruleForm.name)){
 					this.$utils.msg(`Full Name not null`);
 					return
 				}
-				if((!this.ruleForm.mima)){
+				if((!this.ruleForm.password)){
 					this.$utils.msg(`PassWord not null`);
 					return
 				}
-				if(this.ruleForm.lianxidianhua&&(!this.$validate.isMobile(this.ruleForm.lianxidianhua))){
+				if(this.ruleForm.phone&&(!this.$validate.isMobile(this.ruleForm.phone))){
 					this.$utils.msg(`Phone应输入手机格式`);
 					return
 				}

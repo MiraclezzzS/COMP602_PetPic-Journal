@@ -50,35 +50,35 @@ public class CommonUtil {
 
 //    public static String getCellValue(Cell cell) {
 //        String resultValue = "";
-//        // 判空
+//        //   
 //        if (Objects.isNull(cell)) {
 //            return resultValue;
 //        }
 //
-//        // 拿到单元格类型
+//        //        
 //        int cellType = cell.getCellType();
 //        switch (cellType) {
-//            // 字符串类型
+//            //      
 //            case Cell.CELL_TYPE_STRING:
 //                resultValue = StringUtils.isEmpty(cell.getStringCellValue()) ? "" : cell.getStringCellValue().trim();
 //                break;
-//            // 布尔类型
+//            //     
 //            case Cell.CELL_TYPE_BOOLEAN:
 //                resultValue = String.valueOf(cell.getBooleanCellValue());
 //                break;
-//            // 数值类型
+//            //     
 //            case Cell.CELL_TYPE_NUMERIC:
 //                /**
-//                 * format 的值可能为以下这些 yyyyMMddHHmmss
+//                 * format           yyyyMMddHHmmss
 //                 * yyyy-MM-dd----- 14
-//                 * yyyy年m月d日----- 31
-//                 * yyyy年m月--------57
-//                 * m月d日  -----------58
+//                 * yyyy m d ----- 31
+//                 * yyyy m --------57
+//                 * m d   -----------58
 //                 * HH:mm-----------20
-//                 * h时mm分  --------- 32
+//                 * h mm   --------- 32
 //                 */
 //                Object val = cell.getNumericCellValue();
-//                // POI Excel 日期格式转换
+//                // POI Excel       
 //                String formatDate = "";
 //                switch (cell.getCellStyle().getDataFormat()){
 //                    case 14:
@@ -91,19 +91,19 @@ public class CommonUtil {
 //                        formatDate = "HH:mm:ss";
 //                        break;
 //                    case 31:
-//                        formatDate = "yyyy年MM月dd日";
+//                        formatDate = "yyyy MM dd ";
 //                        break;
 //                    case 32:
-//                        formatDate = "HH时mm分";
+//                        formatDate = "HH mm ";
 //                        break;
 //                    case 33:
-//                        formatDate = "HH时mm分mm秒";
+//                        formatDate = "HH mm mm ";
 //                        break;
 //                    case 57:
-//                        formatDate = "yyyy年MM月";
+//                        formatDate = "yyyy MM ";
 //                        break;
 //                    case 58:
-//                        formatDate = "MM月dd日";
+//                        formatDate = "MM dd ";
 //                        break;
 //                    case 176:
 //                        formatDate = "yyyy-MM-dd HH:mm:ss";
@@ -115,7 +115,7 @@ public class CommonUtil {
 //                    resultValue = new DecimalFormat("#.######").format(cell.getNumericCellValue());
 //                }
 //                break;
-//            // 取空串
+//            //    
 //            default:
 //                break;
 //        }

@@ -98,7 +98,7 @@ CREATE TABLE `chongwuxiangce` (
   `xiangcefenlei` varchar(200) DEFAULT NULL COMMENT 'Album Category',
   `paisheshijian` date DEFAULT NULL COMMENT 'Shooting time',
   `zhaopian` longtext COMMENT '照片',
-  `yonghuming` varchar(200) DEFAULT NULL COMMENT 'UserName',
+  `username` varchar(200) DEFAULT NULL COMMENT 'UserName',
   `zhaopianmiaoshu` longtext COMMENT 'Photo description',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1693043148260 DEFAULT CHARSET=utf8 COMMENT='Pet Album';
@@ -351,14 +351,14 @@ DROP TABLE IF EXISTS `yonghu`;
 CREATE TABLE `yonghu` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `yonghuming` varchar(200) NOT NULL COMMENT 'UserName',
+  `username` varchar(200) NOT NULL COMMENT 'UserName',
   `xingming` varchar(200) NOT NULL COMMENT 'Full Name',
   `mima` varchar(200) NOT NULL COMMENT 'PassWord',
   `xingbie` varchar(200) DEFAULT NULL COMMENT 'Gender',
   `lianxidianhua` varchar(200) DEFAULT NULL COMMENT 'Phone',
   `touxiang` longtext COMMENT 'Head Sculpture',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `yonghuming` (`yonghuming`)
+  UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1693043055126 DEFAULT CHARSET=utf8 COMMENT='User';
 /*!40101 SET character_set_client = @saved_cs_client */;
 

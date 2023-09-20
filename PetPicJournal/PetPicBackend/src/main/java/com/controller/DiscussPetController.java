@@ -42,9 +42,9 @@ import com.utils.CommonUtil;
 
 /**
  * Pet Album
- * @author Hang Xu
- * @email kvf7328@autuni.ac.nz
- * @date 8/9/2023
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
  */
 @RestController
 @RequestMapping("/discusschongwuxiangce")
@@ -161,7 +161,7 @@ public class DiscussPetController {
     @Transactional
     public R update(@RequestBody DiscussPetEntity discusschongwuxiangce, HttpServletRequest request){
         //ValidatorUtils.validateEntity(discusschongwuxiangce);
-        discusschongwuxiangceService.updateById(discusschongwuxiangce);//All更新
+        discusschongwuxiangceService.updateById(discusschongwuxiangce);//All  
         return R.ok();
     }
 
