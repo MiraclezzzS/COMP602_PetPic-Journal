@@ -4,7 +4,7 @@
 			<view :style='{"padding":"40rpx 40rpx 40rpx","boxShadow":"inset 0px 0px 0px 0px #f7dcab","margin":"0px auto 20rpx","borderColor":"#e9be70","display":"flex","justifyContent":"space-between","borderRadius":"0","flexWrap":"wrap","background":"none","borderWidth":"0px 0px 0px 0px","width":"calc(100% - 0px)","position":"relative","borderStyle":"solid","height":"auto"}' @tap="onPageTap('../user-info/user-info')" class="header" v-bind:class="{'status':isH5Plus}">
 				<view :style='{"padding":"0","margin":"0","alignItems":"flex-start","flexWrap":"wrap","background":"none","display":"flex","width":"calc(100% - 0px)","position":"static","height":"auto","order":"2"}' v-if="tableName=='yonghu'" class="userinfo">
 					<image :style='{"padding":"0px","margin":"0px 0 20rpx","borderColor":"#1bd0a9","objectFit":"cover","textAlign":"center","right":"100rpx","borderRadius":"100%","top":"80rpx","background":"rgba(255,255,255,.6)","borderWidth":"0px","width":"120rpx","position":"absolute","borderStyle":"solid","height":"120rpx","zIndex":"999"}' :src="user.headImage?baseUrl+user.headImage:'/static/gen/upload.png'"></image>
-					<view :style='{"padding":"36rpx 16rpx 60rpx 40rpx","margin":"0 auto","borderColor":"#86ce9f #e1f9eb","flexDirection":"column","display":"block","float":"left","justifyContent":"center","minHeight":"324rpx","borderRadius":"20rpx","background":"url(http://codegen.caihongy.cn/20230410/9f502c94c8b84bc0aea8e0b413fa7698.png) repeat-x 0% 100%,#f5fdf8","borderWidth":"8rpx 2rpx 0","width":"100%","borderStyle":"solid","height":"auto"}' class="info">
+					<view :style='{"padding":"36rpx 16rpx 60rpx 40rpx","margin":"0 auto","borderColor":"#86ce9f #e1f9eb","flexDirection":"column","display":"block","float":"left","justifyContent":"center","minHeight":"324rpx","borderRadius":"20rpx","background":"url(http://localhost:8080/ssm85bqd1pj/admin/dist/img/center.png) repeat-x 0% 100%,#f5fdf8","borderWidth":"8rpx 2rpx 0","width":"100%","borderStyle":"solid","height":"auto"}' class="info">
 						<view :style='{"padding":"4rpx 8rpx","borderColor":"#eecece","margin":"0 0 0px","color":"#369555","borderWidth":"0 0 0px","width":"90%","lineHeight":"60rpx","fontSize":"28rpx","borderStyle":"dashed","fontWeight":"600"}'>{{user.username}}<text v-if="user.vip&& user.vip=='是'">(VIP)</text></view>
 					</view>
 				</view>
@@ -19,7 +19,8 @@
 				<block v-for="item in menuList" v-bind:key="item.roleName">
 					<block v-if="role==item.roleName" v-bind:key="index" v-for=" (menu,index) in item.backMenu">
 						<block v-bind:key="sort" v-for=" (child,sort) in menu.child">
-							<view :style='{"padding":"0 40rpx 0px","borderColor":"#e1f9eb","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' v-if="child.tableName!='yifahuodingdan' && child.tableName!='yituikuandingdan' &&child.tableName!='yiquxiaodingdan' && child.tableName!='weizhifudingdan' && child.tableName!='yizhifudingdan' && child.tableName!='yiwanchengdingdan' && child.tableName!='exampaper' && child.tableName!='examquestion' " @tap="onPageTap('../'+child.tableName+'/list?userid='+user.id+'&menuJump='+child.menuJump)" class="li" hover-class="hover">
+							<view :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' 
+							 @tap="onPageTap('../'+child.tableName+'/list?userid='+user.id+'&menuJump='+child.menuJump)" class="li" hover-class="hover">
 								<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' :class="child.appFrontIcon"></view>
 								<view :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}' class="text">{{child.menu}}</view>
 								<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
@@ -28,9 +29,21 @@
 					</block>
 				</block>
 
-				<view @tap="onPageTap('../chat/chat')" :style='{"padding":"0 40rpx 0px","borderColor":"#e1f9eb","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
+				<view @tap="onPageTap('../chat/chat')" :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
 					<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' class="cuIcon-service"></view>
 					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>Feedback suggestions</view>
+					<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
+				</view>
+				
+				<view @tap="onPageTap1('../updatePass/register')" :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
+					<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' class="cuIcon-service"></view>
+					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>updatePass</view>
+					<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
+				</view>
+				
+				<view @tap="onPageTap2()" :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
+					<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' class="cuIcon-service"></view>
+					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>LogOffUser</view>
 					<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
 				</view>
 
@@ -118,7 +131,27 @@
 						});
 					}
 				});
-			}
+			},
+			onPageTap1(url) {
+			    uni.setStorageSync("loginTable", 'yonghu');
+			    uni.setStorageSync("useridTag",1);
+				uni.navigateTo({
+					url: url,
+					fail: function() {
+						uni.switchTab({
+							url: url
+						});
+					}
+				});
+			},
+			async onPageTap2() {
+			   this.role = uni.getStorageSync("role");
+			   let table = uni.getStorageSync("nowTable");
+			   let res = await this.$api.session(table);
+			   await this.$api.deleteUser(`${this.tableName}`,res.data.id);
+			   this.$utils.msgBack('delete successful');
+			},
+			
 		}
 	}
 </script>
