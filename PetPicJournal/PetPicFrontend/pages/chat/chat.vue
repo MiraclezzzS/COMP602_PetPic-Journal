@@ -55,6 +55,7 @@
 		},
 		methods: {
 			async onSendTap() {
+		
 				await this.$api.add('chat', {
 					ask: this.ask
 				});
