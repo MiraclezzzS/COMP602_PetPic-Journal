@@ -2,7 +2,7 @@ import http from './http'
 import base from './base'
 
 /**
- * 登陆校验
+ * Authentication check
  */
 export const auth = () => {
 	let token = uni.getStorageSync("token");
@@ -14,7 +14,7 @@ export const auth = () => {
 	}
 }
 /**
- * 登陆
+ * Login
  */
 export const login = (tableName, data) => {
 	return http.request({
@@ -24,7 +24,7 @@ export const login = (tableName, data) => {
 	})
 }
 /**
- * 人脸识别登陆
+ * Face Recognition Login
  */
 export const faceLogin = (tableName, data) => {
     return http.request({
@@ -34,7 +34,7 @@ export const faceLogin = (tableName, data) => {
     })
 }
 /**
- *  * 发送邮箱验证码
+ *  * Send email verification code
  *   */
 export const sendemail = (tableName, email) => {
 	return http.request({
@@ -43,7 +43,7 @@ export const sendemail = (tableName, email) => {
 	});
 }
 /**
- *  * 发送短信证码
+ *  * Send SMS verification code
  *   */
 export const sendsms = (tableName, mobile) => {
 	return http.request({
@@ -63,7 +63,7 @@ export const register = (tableName, data) => {
 	})
 }
 /**
- *  * 邮箱register
+ *  * Email registration
  *   */
 export const registerEmail = (tableName, data, emailcode) => {
     let url = `${tableName}/register?emailcode=${emailcode}`;
@@ -74,7 +74,7 @@ export const registerEmail = (tableName, data, emailcode) => {
 	})
 }
 /**
- *  * 短信register
+ *  * SMS registration
  *   */
 export const registerSms = (tableName, data, smscode) => {
     let url = `${tableName}/register?smscode=${smscode}`;
@@ -85,7 +85,7 @@ export const registerSms = (tableName, data, smscode) => {
 	})
 }
 /**
- * 重置PassWord
+ * Reset Password
  */
 export const resetPass = (tableName, username) => {
 	let data = {
@@ -97,8 +97,34 @@ export const resetPass = (tableName, username) => {
 		data
 	})
 }
+
 /**
- * 获取登陆User Information
+ * Update Password
+ */
+export const updatePass = (tableName, password,userid) => {
+	let data = {
+		password: password,
+		userid:userid
+	}
+	return http.request({
+		url: `${tableName}/updatePass`,
+		method: 'GET',
+		data
+	})
+}
+
+export const deleteUser = (tableName, id) =>{
+	let data = {
+		id: id
+	}
+	return http.request({
+		url: `${tableName}/deleteById`,
+		method: 'GET',
+		data
+	})
+}
+/**
+ * Get logged in User Information
  */
 export const session = (tableName) => {
 	return http.request({
@@ -145,7 +171,7 @@ export const save = (tableName, data) => {
 	});
 }
 /**
- * 更新
+ * Update record
  */
 export const update = (tableName, data) => {
 	return http.request({
@@ -172,7 +198,7 @@ export const del = (tableName, data) => {
 	});
 }
 /**
- * 单条信息Search
+ * Get details of a single record
  */
 export const info = (tableName, id) => {
 	return http.request({
@@ -181,7 +207,7 @@ export const info = (tableName, id) => {
 	});
 }
 /**
- * 智能推荐
+ * Intelligent recommendation
  */
 export const recommend = (tableName,data) => {
 	return http.request({
@@ -191,7 +217,7 @@ export const recommend = (tableName,data) => {
 	});
 }
 /**
- * 智能推荐(按购买类型推荐)
+ * Intelligent recommendation (based on purchase type)
  */
 export const recommend2 = (tableName,data) => {
 	return http.request({
@@ -201,16 +227,16 @@ export const recommend2 = (tableName,data) => {
 	});
 }
 /**
- * 上传
+ * Upload
  */
 export const upload = (callback) => {
 	uni.chooseImage({
 		count: 4, //默认9
-		sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-		//sourceType: ['album'], //从相册选择
+		sizeType: ['original', 'compressed'], 
+		//sourceType: ['album'], 
 		success: (res) => {
 			uni.uploadFile({
-				url: `${base.url}file/upload`, //仅为示例，非真实的接口地址
+				url: `${base.url}file/upload`, 
 				filePath: res.tempFilePaths[0],
 				name: 'file',
 				header: {
@@ -233,18 +259,14 @@ export const upload = (callback) => {
 		}
 	});
 }
-/**
- * 垃圾识别
- */
+
 export const rubbish = (tableName, fileName) => {
     return http.request({
         url: `${tableName}/aliyun/rubbish?fileName=`+fileName,
         method: 'GET'
     });
 }
-/**
- * 百度识别（文字，动物，植物，菜品）
- */
+
 export const baiduIdentify = (tableName, type, fileName) => {
     return http.request({
         url: `${tableName}/baidu/${type}?fileName=`+fileName,
@@ -258,7 +280,7 @@ export const uploadMedia = (callback) => {
 		success: function(res) {
 			console.log(res)
 			uni.uploadFile({
-				url: `${base.url}file/upload`, //仅为示例，非真实的接口地址
+				url: `${base.url}file/upload`, 
 				filePath: res.tempFilePath,
 				name: 'file',
 				header: {
@@ -282,9 +304,7 @@ export const uploadMedia = (callback) => {
 	});
 }
 
-/**
- * 获取默认地址
- */
+
 export const defaultAddress = (userid) => {
 	return http.request({
 		url: `address/default?userid=${userid}`,
@@ -292,7 +312,7 @@ export const defaultAddress = (userid) => {
 	});
 }
 /**
- * 联动Search
+ * Search
  * @param {*} tableName 
  * @param {*} columnName 
  * @param {*} data 
@@ -305,7 +325,7 @@ export const option = (tableName, columnName, data) => {
 	});
 }
 /**
- * 随
+ * 
  * @param {*} tableName 
  * @param {*} columnName 
  * @param {*} data 
@@ -317,7 +337,7 @@ export const follow = (tableName, columnName, data) => {
 		data
 	});
 }
-// 论坛接口
+
 export const allPublicForm = (page = 1, limit = 10, title='%%') => {
 	let data = {
 		page: page,
@@ -330,7 +350,7 @@ export const allPublicForm = (page = 1, limit = 10, title='%%') => {
 		data
 	});
 }
-// 我的帖子
+
 export const myForum = (page = 1, limit = 10) => {
 	let data = {
 		page: page,
@@ -375,31 +395,31 @@ export const security = (tableName, data) => {
     });
 }
 export default {
-	login, // 登陆
-	sendemail, //发送邮箱验证码
-	sendsms, //发送短信验证码
-	register, //register
-	registerEmail, //邮箱register
-	registerSms, //短信register
-	resetPass, // 重置
-	auth, // 校验
-	session, // Personal Information
-	list, // Search
-	page, // Search page
-	add, // 添加
-	update, // Modify
+	login, 
+	sendemail, 
+	sendsms, 
+	register, 
+	registerEmail, 
+	registerSms,
+	resetPass,
+	auth, 
+	session, 
+	list, 
+	page, 
+	add, 
+	update, 
     updateBrowseDuration,
-	del, // Delete
-	info, // 单条信息Search,
-	recommend, // 智能推荐
-	recommend2, // 智能推荐(按购买类型推荐)
-	defaultAddress, // 默认地址
-	save, // save
-	upload, // 上传
+	del, 
+	info, 
+	recommend, 
+	recommend2, 
+	defaultAddress, 
+	save, 
+	upload, 
     rubbish,
     baiduIdentify,
-	option, // 联动Search
-	follow, // 随
+	option, 
+	follow, 
 	allPublicForm,
 	myForum,
 	forumDetail,
@@ -408,5 +428,7 @@ export default {
     faceMatch,
 	uploadMedia,
     faceLogin,
-    security
+    security,
+	updatePass,
+	deleteUser
 }
