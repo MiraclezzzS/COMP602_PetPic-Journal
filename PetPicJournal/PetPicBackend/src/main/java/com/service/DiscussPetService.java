@@ -11,13 +11,6 @@ import org.apache.ibatis.annotations.Param;
 import com.entity.view.DiscussPetView;
 
 
-/**
- * Pet Album
- *
- * @author 
- * @email 
- * @date 2023-08-26 17:38:30
- */
 public interface DiscussPetService extends IService<DiscussPetEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
