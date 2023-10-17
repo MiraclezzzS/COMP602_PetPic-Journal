@@ -125,7 +125,7 @@
 			let crossCleanType = uni.getStorageSync('crossCleanType')
             if(crossCleanType) {
 				uni.removeStorageSync('crossCleanType')
-                res = await this.$api.info('discusschongwuxiangce', this.id);
+                res = await this.$api.info('discusspetimage', this.id);
                 this.detail = res.data;
             }
 		},
@@ -134,7 +134,7 @@
 		},
 		methods: {
 			onPayTap(){
-				uni.setStorageSync('paytable','discusschongwuxiangce');
+				uni.setStorageSync('paytable','discusspetimage');
 				uni.setStorageSync('payObject',this.detail);
 				this.$utils.jump('../pay-confirm/pay-confirm?type=1')
 			},
@@ -143,7 +143,7 @@
                 this.$utils.jump(`./detail?id=${item.id}&userid=`+this.userid)
             },
 			onAcrossTap(tableName,crossOptAudit,statusColumnName,tips,statusColumnValue){
-				uni.setStorageSync('crossTable','discusschongwuxiangce');
+				uni.setStorageSync('crossTable','discusspetimage');
 				uni.setStorageSync(`crossObj`, this.detail);
 				uni.setStorageSync(`statusColumnName`, statusColumnName);
 				uni.setStorageSync(`statusColumnValue`, statusColumnValue);
@@ -163,7 +163,7 @@
                 if(this.timer) {
                     clearInterval(this.timer);
                 }
-				let res = await this.$api.info('discusschongwuxiangce', this.id);
+				let res = await this.$api.info('discusspetimage', this.id);
 				this.detail = res.data;
 			},
 
@@ -177,7 +177,7 @@
 			},
 
 			async upCallback(mescroll) {
-                let res = await this.$api.list('discussdiscusschongwuxiangce', {
+                let res = await this.$api.list('discusspetimage', {
 					page: mescroll.num,
 					limit: 10,
 					refid: this.id
@@ -213,7 +213,7 @@
 			},
 			// Add Comment
 			async onCommentTap() {
-				this.$utils.jump(`../discussdiscusschongwuxiangce/add-or-update?refid=${this.id}`)
+				this.$utils.jump(`../discusspetimage/add-or-update?refid=${this.id}`)
 			},
 			onSHTap() {
 				this.$refs.popup.open()
