@@ -70,7 +70,9 @@ public class LoginUserController {
 		if(u==null || !u.getPassword().equals(password)) {
 			return R.error("UserName or PassWord is Wrong");
 		}
-		String token = tokenService.generateToken(u.getId(), username,"yonghu",  "User" );
+		request.getSession().setAttribute("userId", u.getId());
+		System.out.print(request.getSession().getId()+"************"+request.getSession().getAttribute("userId"));
+		String token = tokenService.generateToken(u.getId(), username,"loginuser",  "User" );
 		return R.ok().put("token", token);
 	}
 
@@ -126,6 +128,29 @@ public class LoginUserController {
         loginUserService.updateById(u);
         return R.ok("PassWord is reseted：123456");
     }
+    
+    /**
+     * update PassWord 
+     */
+    @IgnoreAuth
+	@RequestMapping(value = "/updatePass")
+    public R updatePass(String password,Long userid,HttpServletRequest request){
+    	
+    	if(userid==null) {
+    		return R.error("userName is wrong");
+    	}
+    	LoginUserEntity u = new LoginUserEntity<>();
+    	u.setId(userid);
+    	u.setPassword(password);
+        loginUserService.updateById(u);
+        return R.ok("PassWord is reseted="+password);
+    }
+    
+    
+    
+    
+    
+    
 
 
     /**
@@ -259,7 +284,14 @@ public class LoginUserController {
 	
 
 
-
+    /**
+     * Delete
+     */
+    @RequestMapping("/deleteById")
+    public R deleteById(String id){
+        loginUserService.deleteBatchIds(Arrays.asList(id));
+        return R.ok();
+    }
 
 
 
