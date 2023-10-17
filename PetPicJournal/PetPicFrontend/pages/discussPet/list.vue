@@ -153,9 +153,9 @@
 
                 let res = {}
                 if(this.userid) {
-                    res = await this.$api.page(`discusschongwuxiangce`, params);
+                    res = await this.$api.page(`discusspetimage`, params);
                 } else {
-                    res = await this.$api.list(`discusschongwuxiangce`, params);
+                    res = await this.$api.list(`discusspetimage`, params);
                 }
 				if (mescroll.num == 1) this.list = [];
 				this.list = this.list.concat(res.data.list);
@@ -189,7 +189,7 @@
 					content: 'is Deleted',
 					success: async function(res) {
 						if (res.confirm) {
-							await _this.$api.del('discusschongwuxiangce', JSON.stringify([id]));
+							await _this.$api.del('discusspetimage', JSON.stringify([id]));
 							_this.hasNext = true
 							_this.mescroll.resetUpScroll()
 						}
@@ -225,9 +225,9 @@
 				}
                 let res = {};
                 if(this.userid) {
-                    res = await this.$api.page(`discusschongwuxiangce`, searchForm);
+                    res = await this.$api.page(`discusspetimage`, searchForm);
                 } else {
-                    res = await this.$api.list(`discusschongwuxiangce`, searchForm);
+                    res = await this.$api.list(`discusspetimage`, searchForm);
                 }
 				if (this.mescroll.num == 1) this.list = [];
 				this.list = this.list.concat(res.data.list);
