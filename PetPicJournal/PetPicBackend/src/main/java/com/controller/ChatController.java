@@ -165,6 +165,7 @@ public class ChatController {
     	//ValidatorUtils.validateEntity(chat);
     	chat.setUserid((Long)request.getSession().getAttribute("userId"));
     	if(StringUtils.isNotBlank(chat.getAsk())) {
+    		chat.setReply("We have received your feedback and the staff may contact you within 3 working days");
 			chatService.updateForSet("isreply=0", new EntityWrapper<ChatEntity>().eq("userid", request.getSession().getAttribute("userId")));
     		chat.setUserid((Long)request.getSession().getAttribute("userId"));
     		chat.setIsreply(1);
@@ -173,7 +174,6 @@ public class ChatController {
     		chatService.updateForSet("isreply=0", new EntityWrapper<ChatEntity>().eq("userid", chat.getUserid()));
     		chat.setAdminid((Long)request.getSession().getAttribute("userId"));
     	}
-
         chatService.insert(chat);
         return R.ok();
     }
