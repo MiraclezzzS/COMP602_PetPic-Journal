@@ -12,50 +12,50 @@ import com.utils.PageUtils;
 import com.utils.Query;
 
 
-import com.dao.LoginUserDao;
-import com.entity.LoginUserEntity;
-import com.service.LoginUserService;
-import com.entity.vo.LoginUserVO;
-import com.entity.view.LoginUserView;
+import com.dao.SystemintroDao;
+import com.entity.SystemintroEntity;
+import com.service.SystemintroService;
+import com.entity.vo.SystemintroVO;
+import com.entity.view.SystemintroView;
 
-@Service("yonghuService")
-public class LoginUserServiceImpl extends ServiceImpl<LoginUserDao, LoginUserEntity> implements LoginUserService {
+@Service("systemintroService")
+public class SystemintroServiceImpl extends ServiceImpl<SystemintroDao, SystemintroEntity> implements SystemintroService {
 	
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        Page<LoginUserEntity> page = this.selectPage(
-                new Query<LoginUserEntity>(params).getPage(),
-                new EntityWrapper<LoginUserEntity>()
+        Page<SystemintroEntity> page = this.selectPage(
+                new Query<SystemintroEntity>(params).getPage(),
+                new EntityWrapper<SystemintroEntity>()
         );
         return new PageUtils(page);
     }
     
     @Override
-	public PageUtils queryPage(Map<String, Object> params, Wrapper<LoginUserEntity> wrapper) {
-		  Page<LoginUserView> page =new Query<LoginUserView>(params).getPage();
+	public PageUtils queryPage(Map<String, Object> params, Wrapper<SystemintroEntity> wrapper) {
+		  Page<SystemintroView> page =new Query<SystemintroView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
     
     @Override
-	public List<LoginUserVO> selectListVO(Wrapper<LoginUserEntity> wrapper) {
+	public List<SystemintroVO> selectListVO(Wrapper<SystemintroEntity> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
 	
 	@Override
-	public LoginUserVO selectVO(Wrapper<LoginUserEntity> wrapper) {
+	public SystemintroVO selectVO(Wrapper<SystemintroEntity> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
 	
 	@Override
-	public List<LoginUserView> selectListView(Wrapper<LoginUserEntity> wrapper) {
+	public List<SystemintroView> selectListView(Wrapper<SystemintroEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
 	@Override
-	public LoginUserView selectView(Wrapper<LoginUserEntity> wrapper) {
+	public SystemintroView selectView(Wrapper<SystemintroEntity> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}
 
