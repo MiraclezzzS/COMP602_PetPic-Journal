@@ -18,7 +18,7 @@ import com.service.LoginUserService;
 import com.entity.vo.LoginUserVO;
 import com.entity.view.LoginUserView;
 
-@Service("yonghuService")
+@Service("userService")
 public class LoginUserServiceImpl extends ServiceImpl<LoginUserDao, LoginUserEntity> implements LoginUserService {
 	
 
