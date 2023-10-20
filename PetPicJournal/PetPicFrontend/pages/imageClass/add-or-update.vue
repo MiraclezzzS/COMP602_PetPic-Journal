@@ -47,16 +47,12 @@
 				return this.$base.url;
 			},
 
-
-
 		},
 		async onLoad(options) {
 			let table = uni.getStorageSync("nowTable");
 			let res = await this.$api.session(table);
 			this.user = res.data;
 			
-
-
 
 			this.ruleForm.userid = uni.getStorageSync("userid")
 			if (options.refid) {
@@ -90,11 +86,6 @@
 					// })
 				})
 			},
-
-
-
-
-
 
 			getUUID () {
 				return new Date().getTime();
