@@ -4,7 +4,7 @@
 		<form :style='{"width":"100%","padding":"60rpx 40rpx","background":"none","height":"auto"}' class="app-update-pv">
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">Photo Title</view>
-				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.zhaopianbiaoti" v-model="ruleForm.zhaopianbiaoti" placeholder="Photo Title"></input>
+				<input :style='{"border":"0","padding":"0px 20rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"none","fontSize":"28rpx"}' :disabled="ro.pettitle" v-model="ruleForm.pettitle" placeholder="Photo Title"></input>
 			</view>
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class=" select">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">Album Category</view>
@@ -18,9 +18,9 @@
 					<view :style='{"width":"100%","padding":"0 20rpx","lineHeight":"80rpx","fontSize":"28rpx","color":"#666","background":"none"}' class="uni-input">{{ruleForm.imagetime?ruleForm.imagetime:"Please select Shooting time"}}</view>
 				</picker>
 			</view>
-			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="" @tap="zhaopianTap">
+			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="" @tap="petimageTap">
 				<view :style='{"width":"auto","padding":"0 20rpx 0 0","fontSize":"28rpx","color":"#369555","textAlign":"right","fontWeight":"600"}' class="title">照片</view>
-				<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-if="ruleForm.zhaopian" :src="baseUrl+ruleForm.zhaopian.split(',')[0]" mode="aspectFill"></image>
+				<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-if="ruleForm.petimage" :src="baseUrl+ruleForm.petimage.split(',')[0]" mode="aspectFill"></image>
 				<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-else src="../../static/gen/upload.png" mode="aspectFill"></image>
 			</view>
 			<view :style='{"padding":"0 20rpx 0px","margin":"0 0 20rpx","borderColor":"#e1f9eb","borderRadius":"0px","flexWrap":"wrap","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","lineHeight":"100rpx","borderStyle":"solid","height":"auto"}' class="">
@@ -34,7 +34,7 @@
 			
 			<view :style='{"padding":"20rpx 20rpx","margin":"0 0 24rpx","borderColor":"#d9eff0","borderWidth":"0 0 2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","width":"100%","borderStyle":"dashed","height":"auto"}' class="">
 				<view :style='{"width":"100%","lineHeight":"80rpx","fontSize":"28rpx","color":"#369555","fontWeight":"600"}' class="title">Photo description</view>
-                <xia-editor ref="editor" :style='{"padding":"0px","borderColor":"#f4e5e2","borderRadius":"0px","color":"#666","background":"none","borderWidth":"0px","width":"100%","borderStyle":"solid","height":"auto"}' v-model="ruleForm.zhaopianmiaoshu" placeholder="Photo description" @editorChange="zhaopianmiaoshuChange"></xia-editor>
+                <xia-editor ref="editor" :style='{"padding":"0px","borderColor":"#f4e5e2","borderRadius":"0px","color":"#666","background":"none","borderWidth":"0px","width":"100%","borderStyle":"solid","height":"auto"}' v-model="ruleForm.imageremark" placeholder="Photo description" @editorChange="imageremarkChange"></xia-editor>
 			</view>
 			
 			<view :style='{"padding":"0px","margin":"40rpx 0 0","flexWrap":"wrap","background":"none","display":"flex","width":"100%","justifyContent":"center","height":"auto"}' class="btn" >
@@ -55,23 +55,23 @@
 			return {
 				cross:'',
 				ruleForm: {
-				zhaopianbiaoti: '',
+				pettitle: '',
 				imageclass: '',
 				imagetime: '',
-				zhaopian: '',
+				petimage: '',
 				username: '',
-				zhaopianmiaoshu: '',
+				imageremark: '',
 				},
 				imageclassOptions: [],
 				imageclassIndex: 0,
 				user: {},
                 ro:{
-                   zhaopianbiaoti : false,
+                   pettitle : false,
                    imageclass : false,
                    imagetime : false,
-                   zhaopian : false,
+                   petimage : false,
                    username : false,
-                   zhaopianmiaoshu : false,
+                   imageremark : false,
                 },
 			}
 		},
@@ -108,16 +108,16 @@
 			}
 			if (options.id) {
 				this.ruleForm.id = options.id;
-				res = await this.$api.info(`chongwuxiangce`, this.ruleForm.id);
+				res = await this.$api.info(`petimage`, this.ruleForm.id);
 				this.ruleForm = res.data;
 			}
 			this.cross = options.cross;
 			if(options.cross){
 				var obj = uni.getStorageSync('crossObj');
 				for (var o in obj){
-					if(o=='zhaopianbiaoti'){
-					this.ruleForm.zhaopianbiaoti = obj[o];
-					this.ro.zhaopianbiaoti = true;
+					if(o=='pettitle'){
+					this.ruleForm.pettitle = obj[o];
+					this.ro.pettitle = true;
 					continue;
 					}
 					if(o=='imageclass'){
@@ -130,9 +130,9 @@
 					this.ro.imagetime = true;
 					continue;
 					}
-					if(o=='zhaopian'){
-					this.ruleForm.zhaopian = obj[o].split(",")[0];
-					this.ro.zhaopian = true;
+					if(o=='petimage'){
+					this.ruleForm.petimage = obj[o].split(",")[0];
+					this.ro.petimage = true;
 					continue;
 					}
 					if(o=='username'){
@@ -140,9 +140,9 @@
 					this.ro.username = true;
 					continue;
 					}
-					if(o=='zhaopianmiaoshu'){
-					this.ruleForm.zhaopianmiaoshu = obj[o];
-					this.ro.zhaopianmiaoshu = true;
+					if(o=='imageremark'){
+					this.ruleForm.imageremark = obj[o];
+					this.ro.imageremark = true;
 					continue;
 					}
 				}
@@ -151,8 +151,8 @@
             this.$forceUpdate()
 		},
 		methods: {
-            zhaopianmiaoshuChange(e) {
-                this.ruleForm.zhaopianmiaoshu = e
+            imageremarkChange(e) {
+                this.ruleForm.imageremark = e
             },
 			styleChange() {
 				this.$nextTick(()=>{
@@ -174,10 +174,10 @@
 				this.ruleForm.imageclass = this.imageclassOptions[this.imageclassIndex]
 			},
 
-			zhaopianTap() {
+			petimageTap() {
 				let _this = this;
 				this.$api.upload(function(res) {
-					_this.ruleForm.zhaopian = 'upload/' + res.file;
+					_this.ruleForm.petimage = 'upload/' + res.file;
 					_this.$forceUpdate();
 					_this.$nextTick(()=>{
 						_this.styleChange()
@@ -240,24 +240,24 @@
 						crossuserid:crossuserid,
 						crossrefid:crossrefid,
 					}
-					let res = await this.$api.list(`chongwuxiangce`, params);
+					let res = await this.$api.list(`petimage`, params);
 					if (res.data.total >= crossoptnum) {
 						this.$utils.msg(uni.getStorageSync('tips'));
                         uni.removeStorageSync('crossCleanType');
 						return false;
 					} else {
 						if(this.ruleForm.id){
-							await this.$api.update(`chongwuxiangce`, this.ruleForm);
+							await this.$api.update(`petimage`, this.ruleForm);
 						}else{
-							await this.$api.add(`chongwuxiangce`, this.ruleForm);
+							await this.$api.add(`petimage`, this.ruleForm);
 						}
 						this.$utils.msgBack('Successfully submitted');
 					}
 				} else {
 					if(this.ruleForm.id){
-						await this.$api.update(`chongwuxiangce`, this.ruleForm);
+						await this.$api.update(`petimage`, this.ruleForm);
 					}else{
-						await this.$api.add(`chongwuxiangce`, this.ruleForm);
+						await this.$api.add(`petimage`, this.ruleForm);
 					}
 					this.$utils.msgBack('Successfully submitted');
 				}
