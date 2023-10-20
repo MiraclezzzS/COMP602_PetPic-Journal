@@ -49,7 +49,7 @@ import com.entity.StoreupEntity;
  * @date 2023-08-26 17:38:30
  */
 @RestController
-@RequestMapping("/chongwuxiangce")
+@RequestMapping("/petimage")
 public class PetImageController {
     @Autowired
     private PetImageService petImageService;
@@ -85,7 +85,7 @@ public class PetImageController {
 		HttpServletRequest request){
 
 		String tableName = request.getSession().getAttribute("tableName").toString();
-		if(tableName.equals("yonghu")) {
+		if(tableName.equals("loginuser")) {
 			petImageEntity.setUsername((String)request.getSession().getAttribute("username"));
 		}
         EntityWrapper<PetImageEntity> ew = new EntityWrapper<PetImageEntity>();
