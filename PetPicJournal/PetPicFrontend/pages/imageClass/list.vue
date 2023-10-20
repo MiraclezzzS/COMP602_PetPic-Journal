@@ -292,8 +292,6 @@
 		height: 84rpx;
 	}
 	
-	
-	
 	.category-three .tab.active {
 		cursor: pointer;
 		padding: 0;
