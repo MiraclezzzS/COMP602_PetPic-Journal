@@ -1,6 +1,6 @@
 /**
- * 通用uni-app网络请求
- * 基于 Promise 对象实现更简单的 request 使用方式，支持请求和响应拦截
+ * Universal Uni-App Network Request
+ * Simplified 'request' usage based on Promise objects, supporting request and response interception.
  */
 import base from './base'
 
@@ -52,7 +52,7 @@ export default {
 				if (statusCode === 200) { //成功
 					var rs = response.data;
 					if (rs.code === 0) {
-						// 请求成功后返回
+						// After a successful request, the response is returned.
 						resolve(response.data);
 					} else if (rs.code == 401) {
 						uni.navigateTo({
@@ -128,7 +128,7 @@ export default {
 
 
 /**
- * 请求接口日志记录
+ * Logging of API requests
  */
 function _reqlog(req) {
 	if (process.env.NODE_ENV === 'development') {
@@ -140,7 +140,7 @@ function _reqlog(req) {
 }
 
 /**
- * 响应接口日志记录
+ * Logging of API responses
  */
 function _reslog(res) {
 	let _statusCode = res.statusCode;

@@ -25,7 +25,7 @@ import org.apache.commons.beanutils.BeanUtils;
  * @email 
  * @date 2023-08-26 17:38:30
  */
-@TableName("yonghu")
+@TableName("loginuser")
 public class LoginUserEntity<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 

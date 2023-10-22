@@ -16,7 +16,6 @@ import com.entity.view.ChatView;
  *
  * @author 
  * @email 
- * @date 2023-08-26 17:38:30
  */
 public interface ChatService extends IService<ChatEntity> {
 

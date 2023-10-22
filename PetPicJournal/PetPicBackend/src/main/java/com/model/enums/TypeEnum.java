@@ -5,7 +5,7 @@ import java.io.Serializable;
 import com.baomidou.mybatisplus.enums.IEnum;
 
 /**
- *      IEnum            ，View   spring-mybatis.xml    typeEnumsPackage
+ *      IEnum ，View   spring-mybatis.xml    typeEnumsPackage
  */
 public enum TypeEnum implements IEnum {
     DISABLED(0, "  "),

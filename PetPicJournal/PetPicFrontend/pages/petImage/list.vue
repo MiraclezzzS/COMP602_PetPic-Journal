@@ -35,11 +35,17 @@
 					<view class="uni-product-title" :style='{"padding":"4rpx 20rpx","margin":"0 0 8rpx","whiteSpace":"nowrap","color":"#3d8e59","textAlign":"center","overflow":"hidden","borderRadius":"0","background":"none","width":"96%","lineHeight":"48rpx","fontSize":"28rpx","textOverflow":"ellipsis","order":"2"}'>{{product.imageclass}}</view>
 					<image :style='{"minHeight":"260rpx","padding":"0","margin":"8rpx auto 8rpx","objectFit":"cover","borderRadius":"20rpx","display":"block","width":"100%","height":"auto","order":"1"}' mode="aspectFill" class="uni-product-image" v-if="preHttp(product.petimage)" :src="product.petimage.split(',')[0]"></image>
 					<image :style='{"minHeight":"260rpx","padding":"0","margin":"8rpx auto 8rpx","objectFit":"cover","borderRadius":"20rpx","display":"block","width":"100%","height":"auto","order":"1"}' mode="aspectFill" class="uni-product-image" v-else :src="product.petimage?baseUrl+product.petimage.split(',')[0]:''"></image>
+					
 					<view :style='{"width":"100%","padding":"8rpx 20rpx","justifyContent":"space-between","display":"flex","height":"auto","order":"5"}'>
 						<view :style='{"display":"flex"}'  @click.stop="onUpdateTap(product.id)">
 							<text :style='{"margin":"0 8rpx 0 0","fontSize":"28rpx","lineHeight":"1","color":"#666","display":"inline-block"}' class="cuIcon-edit"></text>
 							<text :style='{"fontSize":"28rpx","lineHeight":"1","color":"#666","display":"inline-block"}'>Modify</text>
 						</view>
+						<view :style='{"display":"flex"}' @click.stop="petimageTap(product)">
+						<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-if="product.petimage" :src="baseUrl+product.petimage.split(',')[0]" mode="aspectFill"></image>
+						<image :style='{"width":"72rpx","margin":"12rpx 0","borderRadius":"100%","objectFit":"cover","display":"block","height":"72rpx"}' class="avator" v-else src="../../static/gen/upload.png" mode="aspectFill"></image>
+						</view>
+						
 						<view :style='{"display":"flex"}' v-if="(userid && isAuth('chongwuxiangce','Delete')) || (!userid && isAuthFront('chongwuxiangce','Delete'))" @click.stop="onDeleteTap(product.id)">
 							<text :style='{"margin":"0 8rpx 0 0","fontSize":"28rpx","lineHeight":"1","color":"#666","display":"inline-block"}' class="cuIcon-delete"></text>
 							<text :style='{"fontSize":"28rpx","lineHeight":"1","color":"#666","display":"inline-block"}'>Delete</text>
@@ -59,7 +65,7 @@
 		</view>
 
 		<button :style='{"border":"0px solid #fff","boxShadow":"0 4rpx 8rpx rgba(0,0,0,.3)","color":"#fff","bottom":"120rpx","right":"128rpx","outline":"none","borderRadius":"100%","background":"#86CE9F","width":"88rpx","lineHeight":"88rpx","fontSize":"28rpx","position":"fixed","height":"88rpx","zIndex":"9999"}' v-if="userid && isAuth('chongwuxiangce','Add')" class="add-btn" @click="onAddTap()">Add</button>
-		<button :style='{"border":"0px solid #fff","boxShadow":"0 4rpx 8rpx rgba(0,0,0,.3)","color":"#fff","bottom":"120rpx","right":"128rpx","outline":"none","borderRadius":"100%","background":"#86CE9F","width":"88rpx","lineHeight":"88rpx","fontSize":"28rpx","position":"fixed","height":"88rpx","zIndex":"9999"}' v-if="!userid && isAuthFront('chongwuxiangce','Add')" class="add-btn" @click="onAddTap()">Add</button>
+		<button :style='{"border":"0px solid #fff","boxShadow":"0 4rpx 8rpx rgba(0,0,0,.3)","color":"#fff","bottom":"120rpx","right":"128rpx","outline":"none","borderRadius":"100%","background":"#86CE9F","width":"88rpx","lineHeight":"88rpx","fontSize":"28rpx","position":"fixed","height":"88rpx","zIndex":"9999"}'  class="add-btn" @click="onAddTap()">Add</button>
 	</view>
 </mescroll-uni>
 </template>
@@ -139,6 +145,17 @@
 			if (this.mescroll) this.mescroll.resetUpScroll()
 		},
 		methods: {
+			petimageTap(product) {
+				let _this = this;
+				this.$api.upload(function(res) {
+					product.petimage = 'upload/' + res.file;
+					 _this.$api.update("petimage",product);
+					
+				});
+				
+				
+				this.$forceUpdate();
+			},
             priceChange(price) {
                 return Number(price).toFixed(2);
             },

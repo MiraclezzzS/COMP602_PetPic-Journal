@@ -18,26 +18,26 @@
 
 	<select id="selectListVO"
 		resultType="com.entity.vo.LoginUserVO" >
-		SELECT * FROM yonghu  yonghu         
+		SELECT * FROM loginuser  loginuser         
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectVO"
 		resultType="com.entity.vo.LoginUserVO" >
-		SELECT  yonghu.* FROM yonghu  yonghu
+		SELECT  loginuser.* FROM loginuser  loginuser
  		<where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 
     <select id="selectListView"
 		resultType="com.entity.view.LoginUserView" >
 
-		SELECT  yonghu.* FROM yonghu  yonghu 	        
+		SELECT  loginuser.* FROM loginuser  loginuser 	        
         <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 	<select id="selectView"
 		resultType="com.entity.view.LoginUserView" >
-		SELECT * FROM yonghu  yonghu <where> 1=1 ${ew.sqlSegment}</where>
+		SELECT * FROM loginuser  loginuser <where> 1=1 ${ew.sqlSegment}</where>
 	</select>
 	
 

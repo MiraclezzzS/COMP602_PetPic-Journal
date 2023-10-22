@@ -2,7 +2,7 @@ import http from './http'
 import base from './base'
 
 /**
- * Authentication check
+ * Login Verification
  */
 export const auth = () => {
 	let token = uni.getStorageSync("token");
@@ -23,9 +23,7 @@ export const login = (tableName, data) => {
 		data
 	})
 }
-/**
- * Face Recognition Login
- */
+
 export const faceLogin = (tableName, data) => {
     return http.request({
         url: `${tableName}/faceLogin`,
@@ -33,18 +31,14 @@ export const faceLogin = (tableName, data) => {
         data
     })
 }
-/**
- *  * Send email verification code
- *   */
+
 export const sendemail = (tableName, email) => {
 	return http.request({
 		url: `${tableName}/sendemail?email=${email}`,
 		method: 'GET'
 	});
 }
-/**
- *  * Send SMS verification code
- *   */
+
 export const sendsms = (tableName, mobile) => {
 	return http.request({
 		url: `${tableName}/sendsms?mobile=${mobile}`,
@@ -63,7 +57,7 @@ export const register = (tableName, data) => {
 	})
 }
 /**
- *  * Email registration
+ *  * Email register
  *   */
 export const registerEmail = (tableName, data, emailcode) => {
     let url = `${tableName}/register?emailcode=${emailcode}`;
@@ -73,9 +67,7 @@ export const registerEmail = (tableName, data, emailcode) => {
 		data
 	})
 }
-/**
- *  * SMS registration
- *   */
+
 export const registerSms = (tableName, data, smscode) => {
     let url = `${tableName}/register?smscode=${smscode}`;
 	return http.request({
@@ -85,7 +77,7 @@ export const registerSms = (tableName, data, smscode) => {
 	})
 }
 /**
- * Reset Password
+ * Reset PassWord
  */
 export const resetPass = (tableName, username) => {
 	let data = {
@@ -99,7 +91,7 @@ export const resetPass = (tableName, username) => {
 }
 
 /**
- * Update Password
+ * update PassWord
  */
 export const updatePass = (tableName, password,userid) => {
 	let data = {
@@ -124,7 +116,7 @@ export const deleteUser = (tableName, id) =>{
 	})
 }
 /**
- * Get logged in User Information
+ * Get User Information
  */
 export const session = (tableName) => {
 	return http.request({
@@ -171,7 +163,7 @@ export const save = (tableName, data) => {
 	});
 }
 /**
- * Update record
+ * update
  */
 export const update = (tableName, data) => {
 	return http.request({
@@ -198,7 +190,7 @@ export const del = (tableName, data) => {
 	});
 }
 /**
- * Get details of a single record
+ * Search
  */
 export const info = (tableName, id) => {
 	return http.request({
@@ -206,9 +198,7 @@ export const info = (tableName, id) => {
 		method: 'GET'
 	});
 }
-/**
- * Intelligent recommendation
- */
+
 export const recommend = (tableName,data) => {
 	return http.request({
 		url: `${tableName}/autoSort`,
@@ -216,9 +206,7 @@ export const recommend = (tableName,data) => {
 		data
 	});
 }
-/**
- * Intelligent recommendation (based on purchase type)
- */
+
 export const recommend2 = (tableName,data) => {
 	return http.request({
 		url: `${tableName}/autoSort2`,
@@ -227,13 +215,13 @@ export const recommend2 = (tableName,data) => {
 	});
 }
 /**
- * Upload
+ * upload
  */
 export const upload = (callback) => {
 	uni.chooseImage({
 		count: 4, //默认9
 		sizeType: ['original', 'compressed'], 
-		//sourceType: ['album'], 
+		//sourceType: ['album'], //Select from Album
 		success: (res) => {
 			uni.uploadFile({
 				url: `${base.url}file/upload`, 
@@ -304,7 +292,9 @@ export const uploadMedia = (callback) => {
 	});
 }
 
-
+/**
+ * Get Default Address
+ */
 export const defaultAddress = (userid) => {
 	return http.request({
 		url: `address/default?userid=${userid}`,
@@ -337,7 +327,7 @@ export const follow = (tableName, columnName, data) => {
 		data
 	});
 }
-
+// interface
 export const allPublicForm = (page = 1, limit = 10, title='%%') => {
 	let data = {
 		page: page,
@@ -350,7 +340,7 @@ export const allPublicForm = (page = 1, limit = 10, title='%%') => {
 		data
 	});
 }
-
+// my forum
 export const myForum = (page = 1, limit = 10) => {
 	let data = {
 		page: page,
@@ -400,8 +390,8 @@ export default {
 	sendsms, 
 	register, 
 	registerEmail, 
-	registerSms,
-	resetPass,
+	registerSms, 
+	resetPass, 
 	auth, 
 	session, 
 	list, 

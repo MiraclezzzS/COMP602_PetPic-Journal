@@ -13,7 +13,6 @@ import java.io.Serializable;
  * Pet Album
  * @author 
  * @email 
- * @date 2023-08-26 17:38:30
  */
 public class PetImageModel  implements Serializable {
 	private static final long serialVersionUID = 1L;

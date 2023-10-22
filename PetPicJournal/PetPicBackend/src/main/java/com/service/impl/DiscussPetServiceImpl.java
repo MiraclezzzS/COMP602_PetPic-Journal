@@ -16,7 +16,7 @@ import com.service.DiscussPetService;
 import com.entity.vo.DiscussPetVO;
 import com.entity.view.DiscussPetView;
 
-@Service("discusschongwuxiangceService")
+@Service("discussService")
 public class DiscussPetServiceImpl extends ServiceImpl<DiscussPetDao, DiscussPetEntity> implements DiscussPetService {
 	
 

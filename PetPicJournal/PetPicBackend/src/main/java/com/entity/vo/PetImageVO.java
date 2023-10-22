@@ -37,7 +37,7 @@ public class PetImageVO  implements Serializable {
 	 * 
 	 */
 	
-	private String zhaopian;
+	private String petimage;
 		
 	/**
 	 * UserName
@@ -49,7 +49,7 @@ public class PetImageVO  implements Serializable {
 	 * Photo description
 	 */
 	
-	private String zhaopianmiaoshu;
+	private String imageremark;
 				
 	
 	
@@ -73,15 +73,15 @@ public class PetImageVO  implements Serializable {
 	 * set：
 	 */
 	 
-	public void setZhaopian(String zhaopian) {
-		this.zhaopian = zhaopian;
+	public void setPetimage(String petimage) {
+		this.petimage = petimage;
 	}
 	
 	/**
 	 * get：
 	 */
-	public String getZhaopian() {
-		return zhaopian;
+	public String getPetimage() {
+		return petimage;
 	}
 				
 	
@@ -96,19 +96,14 @@ public class PetImageVO  implements Serializable {
 		this.username = username;
 	}
 
-	/**
-	 * set：Photo description
-	 */
-	 
-	public void setZhaopianmiaoshu(String zhaopianmiaoshu) {
-		this.zhaopianmiaoshu = zhaopianmiaoshu;
+	public String getImageremark() {
+		return imageremark;
 	}
+
+	public void setImageremark(String imageremark) {
+		this.imageremark = imageremark;
+	}
+
 	
-	/**
-	 * get：Photo description
-	 */
-	public String getZhaopianmiaoshu() {
-		return zhaopianmiaoshu;
-	}
 			
 }

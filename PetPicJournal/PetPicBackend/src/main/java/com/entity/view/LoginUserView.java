@@ -17,7 +17,7 @@ import java.io.Serializable;
  * @email 
  * @date 2023-08-26 17:38:30
  */
-@TableName("yonghu")
+@TableName("loginuser")
 public class LoginUserView  extends LoginUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

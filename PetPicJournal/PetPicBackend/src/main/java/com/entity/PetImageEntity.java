@@ -27,7 +27,7 @@ import com.baomidou.mybatisplus.enums.IdType;
  * @email 
  * @date 2023-08-26 17:38:30
  */
-@TableName("chongwuxiangce")
+@TableName("petimage")
 public class PetImageEntity<T> implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -55,7 +55,7 @@ public class PetImageEntity<T> implements Serializable {
 	 * Photo Title
 	 */
 					
-	private String zhaopianbiaoti;
+	private String pettitle;
 	
 	/**
 	 * Album Category
@@ -75,7 +75,7 @@ public class PetImageEntity<T> implements Serializable {
 	 * image
 	 */
 					
-	private String zhaopian;
+	private String petimage;
 	
 	/**
 	 * UserName
@@ -87,7 +87,7 @@ public class PetImageEntity<T> implements Serializable {
 	 * Photo description
 	 */
 					
-	private String zhaopianmiaoshu;
+	private String imageremark;
 	
 	
 	@JsonFormat(locale="zh", timezone="GMT+8", pattern="yyyy-MM-dd HH:mm:ss")
@@ -108,20 +108,14 @@ public class PetImageEntity<T> implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	/**
-	 * set：Photo Title
-	 */
-	public void setZhaopianbiaoti(String zhaopianbiaoti) {
-		this.zhaopianbiaoti = zhaopianbiaoti;
-	}
-	/**
-	 * get：Photo Title
-	 */
-	public String getZhaopianbiaoti() {
-		return zhaopianbiaoti;
-	}
 	
-	
+	public String getPettitle() {
+		return pettitle;
+	}
+
+	public void setPettitle(String pettitle) {
+		this.pettitle = pettitle;
+	}
 
 	public String getImageclass() {
 		return imageclass;
@@ -139,19 +133,16 @@ public class PetImageEntity<T> implements Serializable {
 		this.imagetime = imagetime;
 	}
 
-	/**
-	 * set
-	 */
-	public void setZhaopian(String zhaopian) {
-		this.zhaopian = zhaopian;
-	}
-	/**
-	 * get
-	 */
-	public String getZhaopian() {
-		return zhaopian;
-	}
 	
+	
+	public String getPetimage() {
+		return petimage;
+	}
+
+	public void setPetimage(String petimage) {
+		this.petimage = petimage;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -160,17 +151,16 @@ public class PetImageEntity<T> implements Serializable {
 		this.username = username;
 	}
 
-	/**
-	 * set：Photo description
-	 */
-	public void setZhaopianmiaoshu(String zhaopianmiaoshu) {
-		this.zhaopianmiaoshu = zhaopianmiaoshu;
+	public String getImageremark() {
+		return imageremark;
 	}
-	/**
-	 * get：Photo description
-	 */
-	public String getZhaopianmiaoshu() {
-		return zhaopianmiaoshu;
+
+	public void setImageremark(String imageremark) {
+		this.imageremark = imageremark;
 	}
+
+	
+
+	
 
 }

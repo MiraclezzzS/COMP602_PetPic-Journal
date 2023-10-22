@@ -13,7 +13,6 @@ import java.io.Serializable;
  * Album Category
  * @author 
  * @email 
- * @date 2023-08-26 17:38:30
  */
 public class ImageClassModel  implements Serializable {
 	private static final long serialVersionUID = 1L;

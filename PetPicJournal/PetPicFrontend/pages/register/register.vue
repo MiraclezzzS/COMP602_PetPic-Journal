@@ -64,7 +64,7 @@
             this.tableName = table;
 
 			if(this.tableName=='yonghu'){
-                this.sexOptions = "男,女".split(',');
+                this.sexOptions = "male,female".split(',');
 				this.ruleForm.sex=this.sexOptions[0]
 			}
 			

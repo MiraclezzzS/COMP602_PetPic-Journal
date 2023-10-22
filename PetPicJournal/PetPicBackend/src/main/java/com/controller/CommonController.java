@@ -140,6 +140,8 @@ public class CommonController{
 		return R.ok().put("count", count);
 	}
 	
+	
+
 	@IgnoreAuth
 	@RequestMapping("/value/{tableName}/{xColumnName}/{yColumnName}")
 	public R value(@PathVariable("tableName") String tableName, @PathVariable("yColumnName") String yColumnName, @PathVariable("xColumnName") String xColumnName) {
@@ -158,6 +160,7 @@ public class CommonController{
 		}
 		return R.ok().put("data", result);
 	}
+
 	
 	@IgnoreAuth
 	@RequestMapping("/group/{tableName}/{columnName}")
@@ -176,6 +179,7 @@ public class CommonController{
 		}
 		return R.ok().put("data", result);
 	}
+	
 	
 	@IgnoreAuth
 	@RequestMapping("/value/{tableName}/{xColumnName}/{yColumnName}/{timeStatType}")
@@ -196,5 +200,7 @@ public class CommonController{
 		}
 		return R.ok().put("data", result);
 	}
+
+
 
 }

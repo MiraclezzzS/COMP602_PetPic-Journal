@@ -18,7 +18,7 @@ import java.io.Serializable;
  * @email 
  * @date 2023-08-26 17:38:30
  */
-@TableName("chongwuxiangce")
+@TableName("petimage")
 public class PetImageView  extends PetImageEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 

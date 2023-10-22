@@ -44,7 +44,6 @@ import com.utils.CommonUtil;
  * LoginUser Manager
  * @author 
  * @email 
- * @date 2023-08-26 17:38:30
  */
 @RestController
 @RequestMapping("/yonghu")

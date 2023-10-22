@@ -37,13 +37,19 @@
 				
 				<view @tap="onPageTap1('../updatePass/register')" :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
 					<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' class="cuIcon-service"></view>
-					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>updatePass</view>
+					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>Update Password</view>
 					<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
 				</view>
 				
 				<view @tap="onPageTap2()" :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
 					<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' class="cuIcon-service"></view>
-					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>LogOffUser</view>
+					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>Delete Account</view>
+					<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
+				</view>
+				
+				<view @tap="onPageTap('../profile/add-or-update')" :style='{"padding":"0 40rpx 0px","borderColor":"white","margin":"0 0 20rpx","alignItems":"center","display":"flex","float":"left","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, white 0%, rgb(255 235 59 / 16%) 100%)","width":"100%","lineHeight":"88rpx","borderStyle":"solid","height":"100rpx"}' class="li" hover-class="hover">
+					<view v-if="true" :style='{"width":"88rpx","lineHeight":"88rpx","fontSize":"56rpx","color":"#369555"}' class="cuIcon-service"></view>
+					<view class="text" :style='{"padding":"0 8rpx","color":"#369555","flex":"1","width":"100%","lineHeight":"88rpx","fontSize":"28rpx","fontWeight":"500"}'>Pet Profile</view>
 					<view v-if="true" :style='{"width":"28rpx","lineHeight":"28rpx","fontSize":"32rpx","color":"#369555"}' class="cuIcon-right"></view>
 				</view>
 
@@ -145,6 +151,14 @@
 				});
 			},
 			async onPageTap2() {
+			   this.role = uni.getStorageSync("role");
+			   let table = uni.getStorageSync("nowTable");
+			   let res = await this.$api.session(table);
+			   await this.$api.deleteUser(`${this.tableName}`,res.data.id);
+			   this.$utils.msgBack('delete successful');
+			},
+			
+			async onPageTap3() {
 			   this.role = uni.getStorageSync("role");
 			   let table = uni.getStorageSync("nowTable");
 			   let res = await this.$api.session(table);

@@ -40,11 +40,23 @@ import com.utils.MPUtil;
 import com.utils.MapUtils;
 import com.utils.CommonUtil;
 
+/**
+ * Pet Album
+ * @author 
+ * @email 
+ * @date 2023-08-26 17:38:30
+ */
 @RestController
 @RequestMapping("/discusspetimage")
 public class DiscussPetController {
     @Autowired
     private DiscussPetService discusschongwuxiangceService;
+
+
+
+
+
+    
 
 
     /**
@@ -114,6 +126,9 @@ public class DiscussPetController {
         return R.ok().put("data", discusschongwuxiangce);
     }
     
+
+
+
     /**
      * save
      */
@@ -138,6 +153,7 @@ public class DiscussPetController {
         return R.ok();
     }
 
+
     /**
      * Modify
      */
@@ -149,6 +165,9 @@ public class DiscussPetController {
         return R.ok();
     }
 
+    
+    
+
     /**
      * Delete
      */
@@ -158,4 +177,15 @@ public class DiscussPetController {
         return R.ok();
     }
     
+	
+
+
+
+
+
+
+
+
+
+
 }

@@ -25,7 +25,7 @@
 				<input :style='{"border":"0","padding":"0px 24rpx","margin":"0px","color":"#666","borderRadius":"0px","flex":"1","background":"rgba(255, 255, 255, 0)","fontSize":"28rpx","height":"80rpx"}'   v-model="ruleForm.phone" placeholder="Phone"></input>
 			</view>
 			<view :style='{"minHeight":"100rpx","padding":"0 20rpx 2rpx","margin":"0 0 20rpx","borderColor":"#e1f9eb","alignItems":"center","borderRadius":"0px","borderWidth":"2rpx","background":"linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(245,253,248,1) 100%)","display":"flex","width":"100%","borderStyle":"solid","height":"auto"}' v-if="tableName=='yonghu'" @tap="yonghuheadImageTap" class="">
-				<view class="title" :style='{"padding":"0 20rpx 0 0","color":"#369555","textAlign":"right","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","fontWeight":"600"}'>Head Sculpture</view>
+				<view class="title" :style='{"padding":"0 20rpx 0 0","color":"#369555","textAlign":"right","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","fontWeight":"600"}'>Profile Picture</view>
 				<image :style='{"width":"80rpx","borderRadius":"100%","objectFit":"cover","display":"block","height":"80rpx"}' v-if="ruleForm.headImage" style="margin: 0;" class="avator" :src="baseUrl+ruleForm.headImage" mode=""></image>
 				<image :style='{"width":"80rpx","borderRadius":"100%","objectFit":"cover","display":"block","height":"80rpx"}' v-else class="avator" style="margin: 0;" src="../../static/gen/upload.png" mode=""></image>
 			</view>
@@ -64,13 +64,15 @@
 			this.ruleForm = res.data;
 			this.tableName = table;
 			if(this.tableName=='yonghu'){
-				this.yonghusexOptions = ",".split(',');
+				this.yonghusexOptions = "male,female".split(',');
 				this.yonghusexOptions.forEach((item, index) => {
 					if(item==this.ruleForm.sex) {
 						this.yonghusexIndex = index;
 					}
 				});
 			}
+			console.log("yonghusexOptions---------------");
+			console.log(this.yonghusexOptions[0]);
 			this.styleChange()
             this.$forceUpdate()
 		},

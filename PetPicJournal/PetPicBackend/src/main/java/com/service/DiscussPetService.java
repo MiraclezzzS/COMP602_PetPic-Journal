@@ -11,6 +11,12 @@ import org.apache.ibatis.annotations.Param;
 import com.entity.view.DiscussPetView;
 
 
+/**
+ * Pet Album
+ *
+ * @author 
+ * @email 
+ */
 public interface DiscussPetService extends IService<DiscussPetEntity> {
 
     PageUtils queryPage(Map<String, Object> params);

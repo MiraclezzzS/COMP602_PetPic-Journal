@@ -49,12 +49,7 @@ public class FileController{
         }
 		File dest = new File(request.getSession().getServletContext().getRealPath("/upload")+"/"+fileName);
 		file.transferTo(dest);
-		/**
- 		 *     idea  eclipse    ，               ，           
-  		 *      "D:\\ssmpiv99\\src\\main\\webapp\\upload"         upload  ，
- 		 *             、       
- 		 */
-//		FileUtils.copyFile(dest, new File("D:\\ssmpiv99\\src\\main\\webapp\\upload"+"/"+fileName)); /**Modify             //    **/
+	
 		if(StringUtils.isNotBlank(type) && type.equals("1")) {
 			ConfigEntity configEntity = configService.selectOne(new EntityWrapper<ConfigEntity>().eq("name", "faceFile"));
 			if(configEntity==null) {

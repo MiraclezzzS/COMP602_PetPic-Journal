@@ -18,7 +18,7 @@ import com.service.PetImageService;
 import com.entity.vo.PetImageVO;
 import com.entity.view.PetImageView;
 
-@Service("chongwuxiangceService")
+@Service("petImageService")
 public class PetImageServiceImpl extends ServiceImpl<PetImageDao, PetImageEntity> implements PetImageService {
 	
 
